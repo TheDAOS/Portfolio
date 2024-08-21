@@ -1,4 +1,16 @@
-const commands = {};
+const commands = {
+    help() {
+        term.echo(`List of available commands: ${help}`);
+    }
+};
+
+const formatter = new Intl.ListFormat('en', {
+    style: 'long',
+    type: 'conjunction',
+});
+
+const command_list = Object.keys(commands);
+const help = formatter.format(command_list);
 
 const greetings = `  ______                    _             __   ____             __  ____      ___     
  /_  __/__  _________ ___  (_)___  ____ _/ /  / __ \\____  _____/ /_/ __/___  / (_)___ 

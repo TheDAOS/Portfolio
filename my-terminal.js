@@ -7,5 +7,27 @@ const greetings = `  ______                    _             __   ____          
 /_/  \\___/_/  /_/ /_/ /_/_/_/ /_/\\__,_/_/  /_/    \\____/_/   \\__/_/  \\____/_/_/\\____/`
 
 const term = $('body').terminal(commands, {
-    greetings
+    greetings: false
 });
+
+function ready() {
+    term.echo(() => {
+      const ascii = render('Terminal Portfolio');
+      return `${ascii}\nWelcome to my Terminal Portfolio\n`;
+    });
+}
+ 
+
+const font = 'Slant';
+
+figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
+figlet.preloadFonts([font], ready);
+
+function render(text) {
+    const cols = term.cols();
+    return figlet.textSync(text, {
+        font: font,
+        width: cols,
+        whitespaceBreak: true
+    });
+}

@@ -19,11 +19,10 @@ figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready);
 
 function ready() {
-    term.echo(() => {
-      const ascii = rainbow(render('Terminal Portfolio'));
-      return `${ascii}\nWelcome to my Terminal Portfolio\n`;
-    }).resume();
- } 
+   term.echo(() => rainbow(render('Terminal Portfolio')))
+       .echo('Welcome to my Terminal Portfolio\n').resume();
+}
+
 
 function render(text) {
     const cols = term.cols();

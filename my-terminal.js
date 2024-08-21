@@ -6,47 +6,6 @@ const greetings = `  ______                    _             __   ____          
  / / /  __/ /  / / / / / / / / / / /_/ / /  / ____/ /_/ / /  / /_/ __/ /_/ / / / /_/ /
 /_/  \\___/_/  /_/ /_/ /_/_/_/ /_/\\__,_/_/  /_/    \\____/_/   \\__/_/  \\____/_/_/\\____/`
 
-
 const term = $('body').terminal(commands, {
-    greetings : false
+    greetings
 });
-
-term.pause();
-
-const font = 'Slant';
-
-figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
-figlet.preloadFonts([font], ready);
-
-function ready() {
-   term.echo(() => rainbow(render('Terminal Portfolio')))
-       .echo('Welcome to my Terminal Portfolio\n').resume();
-}
-
-
-function render(text) {
-    const cols = term.cols();
-    return trim(figlet.textSync(text, {
-        font: font,
-        width: cols,
-        whitespaceBreak: true
-    }));
-}
-
-
-function trim(str) {
-    return str.replace(/[\n\s]+$/, '');
-}
-
-function rainbow(string) {
-    return lolcat.rainbow(function(char, color) {
-        char = $.terminal.escape_brackets(char);
-        return `[[;${hex(color)};]${char}]`;
-    }, string).join('\n');
-}
-
-function hex(color) {
-    return '#' + [color.red, color.green, color.blue].map(n => {
-        return n.toString(16).padStart(2, '0');
-    }).join('');
-}

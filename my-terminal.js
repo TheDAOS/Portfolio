@@ -12,8 +12,13 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
+function rand(max) {
+    return Math.floor(Math.random() * (max + 1));
+}
+
 function ready() {
-    term.echo(() => rainbow(render('Terminal Portfolio')))
+    const seed = rand(256);
+    term.echo(() => rainbow(render('Terminal Portfolio'), seed))
         .echo('Welcome to my Terminal Portfolio\n').resume();
 }
  
@@ -37,11 +42,12 @@ function trim(str) {
     return str.replace(/[\n\s]+$/, '');
 }
 
-function rainbow(string) {
+
+function rainbow(string, seed) {
     return lolcat.rainbow(function(char, color) {
         char = $.terminal.escape_brackets(char);
         return `[[;${hex(color)};]${char}]`;
-    }, string).join('\n');
+    }, string, seed).join('\n');
 }
 
 function hex(color) {

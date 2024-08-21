@@ -1,6 +1,9 @@
 const commands = {
     help() {
         term.echo(`List of available commands: ${help}`);
+    },
+    echo(...args) {
+        term.echo(args.join(' '));
     }
 };
 
@@ -19,7 +22,8 @@ const greetings = `  ______                    _             __   ____          
 /_/  \\___/_/  /_/ /_/ /_/_/_/ /_/\\__,_/_/  /_/    \\____/_/   \\__/_/  \\____/_/_/\\____/`
 
 const term = $('body').terminal(commands, {
-    greetings: false
+    greetings: false,
+    checkArity: false
 });
 
 term.pause();

@@ -10,13 +10,12 @@ const term = $('body').terminal(commands, {
     greetings: false
 });
 
+term.pause();
+
 function ready() {
-    term.echo(() => {
-      const ascii = render('Terminal Portfolio');
-      return `${ascii}\nWelcome to my Terminal Portfolio\n`;
-    });
+   term.echo(() => render('Terminal Portfolio')).resume();
 }
- 
+
 
 const font = 'Slant';
 

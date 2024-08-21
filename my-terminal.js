@@ -13,8 +13,10 @@ const term = $('body').terminal(commands, {
 term.pause();
 
 function ready() {
-   term.echo(() => render('Terminal Portfolio')).resume(), { ansi: true };
+    term.echo(() => rainbow(render('Terminal Portfolio')))
+        .echo('Welcome to my Terminal Portfolio\n').resume();
 }
+ 
 
 
 const font = 'Slant';
@@ -33,4 +35,17 @@ function render(text) {
 
 function trim(str) {
     return str.replace(/[\n\s]+$/, '');
+}
+
+function rainbow(string) {
+    return lolcat.rainbow(function(char, color) {
+        char = $.terminal.escape_brackets(char);
+        return `[[;${hex(color)};]${char}]`;
+    }, string).join('\n');
+}
+
+function hex(color) {
+    return '#' + [color.red, color.green, color.blue].map(n => {
+        return n.toString(16).padStart(2, '0');
+    }).join('');
 }

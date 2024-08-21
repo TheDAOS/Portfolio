@@ -13,7 +13,7 @@ const term = $('body').terminal(commands, {
 term.pause();
 
 function ready() {
-   term.echo(() => render('Terminal Portfolio')).resume();
+   term.echo(() => render('Terminal Portfolio')).resume(), { ansi: true };
 }
 
 

@@ -25,9 +25,13 @@ figlet.preloadFonts([font], ready);
 
 function render(text) {
     const cols = term.cols();
-    return figlet.textSync(text, {
+    return trim(figlet.textSync(text, {
         font: font,
         width: cols,
         whitespaceBreak: true
-    });
+    }));
+}
+
+function trim(str) {
+    return str.replace(/[\n\s]+$/, '');
 }

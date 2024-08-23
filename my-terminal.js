@@ -12,7 +12,7 @@ const formatter = new Intl.ListFormat('en', {
     type: 'conjunction',
 });
 
-const command_list = Object.keys(commands);
+const command_list = ['clear'].concat(Object.keys(commands));
 const help = formatter.format(command_list);
 
 const greetings = `  ______                    _             __   ____             __  ____      ___     
@@ -23,7 +23,9 @@ const greetings = `  ______                    _             __   ____          
 
 const term = $('body').terminal(commands, {
     greetings: false,
-    checkArity: false
+    checkArity: false,
+    exit: false,
+    completion: true
 });
 
 term.pause();

@@ -12,8 +12,15 @@ const formatter = new Intl.ListFormat('en', {
     type: 'conjunction',
 });
 
-const command_list = ['clear'].concat(Object.keys(commands));
-const help = formatter.format(command_list);
+// const command_list = ['clear'].concat(Object.keys(commands));
+// const help = formatter.format(command_list);
+
+const command_list = Object.keys(commands);
+const formatted_list = command_list.map(cmd => {
+    return `<white class="command">${cmd}</white>`;
+});
+const help = formatter.format(formatted_list);
+
 
 const greetings = `  ______                    _             __   ____             __  ____      ___     
  /_  __/__  _________ ___  (_)___  ____ _/ /  / __ \\____  _____/ /_/ __/___  / (_)___ 

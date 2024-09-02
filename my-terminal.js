@@ -26,6 +26,10 @@ const command_list = ['clear'].concat(Object.keys(commands));
 const formatted_list = command_list.map(cmd => `<span class="command">${cmd}</span>`);
 const help = formatter.format(formatted_list);
 
+function renderHtmlHelp() {
+    // Render the help text with HTML tags as raw HTML
+    return `<div>List of available commands: ${helpText}</div>`;
+}
 
 const greetings = `  ______                    _             __   ____             __  ____      ___     
  /_  __/__  _________ ___  (_)___  ____ _/ /  / __ \\____  _____/ /_/ __/___  / (_)___ 
@@ -37,7 +41,9 @@ const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,
-    completion: true
+    completion: true,
+    // Enable HTML rendering for the terminal
+    prompt: '→ '
 });
 
 term.pause();

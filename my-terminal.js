@@ -16,20 +16,12 @@ const formatter = new Intl.ListFormat('en', {
 // const command_list = ['clear'].concat(Object.keys(commands));
 // const help = formatter.format(command_list);
 
-// const command_list = ['clear'].concat(Object.keys(commands));
-// const formatted_list = command_list.map(cmd => {
-//     return `<white class="command">${cmd}</white>`;
-// });
-// const help = formatter.format(formatted_list);
-
 const command_list = ['clear'].concat(Object.keys(commands));
-const formatted_list = command_list.map(cmd => `<span class="command">${cmd}</span>`);
+const formatted_list = command_list.map(cmd => {
+    return `<white class="command">${cmd}</white>`;
+});
 const help = formatter.format(formatted_list);
 
-function renderHtmlHelp() {
-    // Render the help text with HTML tags as raw HTML
-    return `<div>List of available commands: ${helpText}</div>`;
-}
 
 const greetings = `  ______                    _             __   ____             __  ____      ___     
  /_  __/__  _________ ___  (_)___  ____ _/ /  / __ \\____  _____/ /_/ __/___  / (_)___ 
@@ -41,9 +33,7 @@ const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,
-    completion: true,
-    // Enable HTML rendering for the terminal
-    prompt: '→ '
+    completion: true
 });
 
 term.pause();
@@ -84,13 +74,8 @@ function rainbow(string, seed) {
     }, string, seed).join('\n');
 }
 
-// function hex(color) {
-//     return '#' + [color.red, color.green, color.blue].map(n => {
-//         return n.toString(16).padStart(2, '0');
-//     }).join('');
-// }
-
-
 function hex(color) {
-    return '#' + [color.red, color.green, color.blue].map(n => n.toString(16).padStart(2, '0')).join('');
+    return '#' + [color.red, color.green, color.blue].map(n => {
+        return n.toString(16).padStart(2, '0');
+    }).join('');
 }

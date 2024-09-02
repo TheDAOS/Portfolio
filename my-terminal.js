@@ -16,10 +16,14 @@ const formatter = new Intl.ListFormat('en', {
 // const command_list = ['clear'].concat(Object.keys(commands));
 // const help = formatter.format(command_list);
 
+// const command_list = ['clear'].concat(Object.keys(commands));
+// const formatted_list = command_list.map(cmd => {
+//     return `<white class="command">${cmd}</white>`;
+// });
+// const help = formatter.format(formatted_list);
+
 const command_list = ['clear'].concat(Object.keys(commands));
-const formatted_list = command_list.map(cmd => {
-    return `<white class="command">${cmd}</white>`;
-});
+const formatted_list = command_list.map(cmd => `<span class="command">${cmd}</span>`);
 const help = formatter.format(formatted_list);
 
 
@@ -74,8 +78,13 @@ function rainbow(string, seed) {
     }, string, seed).join('\n');
 }
 
+// function hex(color) {
+//     return '#' + [color.red, color.green, color.blue].map(n => {
+//         return n.toString(16).padStart(2, '0');
+//     }).join('');
+// }
+
+
 function hex(color) {
-    return '#' + [color.red, color.green, color.blue].map(n => {
-        return n.toString(16).padStart(2, '0');
-    }).join('');
+    return '#' + [color.red, color.green, color.blue].map(n => n.toString(16).padStart(2, '0')).join('');
 }

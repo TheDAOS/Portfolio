@@ -1,9 +1,11 @@
 const commands = {
     help() {
-        term.echo(`List of available commands: ${help}`);
+        term.echo(`List of available commands: ${help}`, {raw: true});
     },
     echo(...args) {
-        term.echo(args.join(' '));
+        if (args.length > 0) {
+            term.echo(args.join(' '));
+        }
     }
 };
 
@@ -37,6 +39,11 @@ const term = $('body').terminal(commands, {
 });
 
 term.pause();
+
+term.on('click', '.command', function() {
+    const command = $(this).text();
+    term.exec(command);
+ });
 
 function rand(max) {
     return Math.floor(Math.random() * (max + 1));

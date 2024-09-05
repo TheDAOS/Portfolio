@@ -6,6 +6,9 @@ const commands = {
         if (args.length > 0) {
             term.echo(args.join(' '));
         }
+    },
+    test() {
+        term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
     }
 };
 

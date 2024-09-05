@@ -1,6 +1,6 @@
 const commands = {
     help() {
-        term.echo(`List of available commands: ${help}`);
+        term.echo(`List of available commands: ${help}`, {raw: true});
     },
     echo(...args) {
         term.echo(args.join(' '));

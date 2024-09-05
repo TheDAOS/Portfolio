@@ -12,7 +12,6 @@ const commands = {
     }
 };
 
-
 const formatter = new Intl.ListFormat('en', {
     style: 'long',
     type: 'conjunction',
@@ -42,6 +41,9 @@ const term = $('body').terminal(commands, {
 });
 
 term.pause();
+
+// to show the help at start without exicuting it
+term.exec('help', true);
 
 term.on('click', '.command', function() {
     const command = $(this).text();

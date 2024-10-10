@@ -7,6 +7,10 @@ const commands = {
             term.echo(args.join(' '));
         }
     },
+    history() {
+        const history = term.history().slice(-10).join('\n');
+        term.echo(`Command history:\n${history}`);
+    },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
     }

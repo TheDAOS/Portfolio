@@ -50,6 +50,13 @@ function ready() {
         .echo('<white>Welcome to my Terminal Portfolio</white>\n').resume();
 }
 
+function rainbow(string, seed) {
+    return lolcat.rainbow(function(char, color) {
+        char = $.terminal.escape_brackets(char);
+        return `[[;${hex(color)};]${char}]`;
+    }, string, seed).join('\n');
+}
+
 function rand(max) {
     return Math.floor(Math.random() * (max + 1));
 }
@@ -65,14 +72,6 @@ function render(text) {
 
 function trim(str) {
     return str.replace(/[\n\s]+$/, '');
-}
-
-
-function rainbow(string, seed) {
-    return lolcat.rainbow(function(char, color) {
-        char = $.terminal.escape_brackets(char);
-        return `[[;${hex(color)};]${char}]`;
-    }, string, seed).join('\n');
 }
 
 function hex(color) {

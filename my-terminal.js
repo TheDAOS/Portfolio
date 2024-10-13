@@ -95,7 +95,7 @@ const root = '~';
 let cwd = root;
 
 const user = 'guest';
-const server = 'freecodecamp.org';
+const server = 'thedaos.github.io';
 
 function prompt() {
     return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;

@@ -28,12 +28,6 @@ const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</w
 const help = formatter.format(formatted_list);
 
 
-const greetings = `  ______                    _             __   ____             __  ____      ___     
- /_  __/__  _________ ___  (_)___  ____ _/ /  / __ \\____  _____/ /_/ __/___  / (_)___ 
-  / / / _ \\/ ___/ __ \`__ \\/ / __ \\/ __ \`/ /  / /_/ / __ \\/ ___/ __/ /_/ __ \\/ / / __ \\
- / / /  __/ /  / / / / / / / / / / /_/ / /  / ____/ /_/ / /  / /_/ __/ /_/ / / / /_/ /
-/_/  \\___/_/  /_/ /_/ /_/_/_/ /_/\\__,_/_/  /_/    \\____/_/   \\__/_/  \\____/_/_/\\____/`
-
 const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,

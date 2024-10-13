@@ -22,13 +22,9 @@ const commands = {
     }
 };
 
-// const command_list = ['clear'].concat(Object.keys(commands));
-// const help = formatter.format(command_list);
-
+// clear is default command that you can turn off with an option
 const command_list = ['clear'].concat(Object.keys(commands));
-const formatted_list = command_list.map(cmd => {
-    return `<white class="command">${cmd}</white>`;
-});
+const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</white>`);
 const help = formatter.format(formatted_list);
 
 

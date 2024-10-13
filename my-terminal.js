@@ -27,7 +27,6 @@ const command_list = ['clear'].concat(Object.keys(commands));
 const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</white>`);
 const help = formatter.format(formatted_list);
 
-
 const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,
@@ -42,7 +41,7 @@ term.exec('help', true);
 
 term.on('click', '.command', function() {
     const command = $(this).text();
-    term.exec(command);
+    term.exec(command, { typing: true, delay: 50 });
  });
 
 function rand(max) {

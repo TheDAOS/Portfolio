@@ -1,3 +1,19 @@
+/*
+    if 
+    echo('<white>Welcome to my Terminal Portfolio</white>\n')
+    not working
+    output shows <white>Welcome to my Terminal Portfolio</white> insted for showing "Welcome to my Terminal Portfolio" in white
+
+    to fix this
+
+    echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true})
+    add css
+        white {
+            color: white;
+        }
+    this seams to fix this
+*/
+
 const font = 'Slant';
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });

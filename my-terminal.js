@@ -1,3 +1,8 @@
+const font = 'Slant';
+
+figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
+figlet.preloadFonts([font], ready);
+
 const commands = {
     help() {
         term.echo(`List of available commands: ${help}`, {raw: true});
@@ -59,11 +64,6 @@ function ready() {
     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
         .echo('Welcome to my Terminal Portfolio\n').resume();
 }
-
-const font = 'Slant';
-
-figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
-figlet.preloadFonts([font], ready);
 
 function render(text) {
     const cols = term.cols();

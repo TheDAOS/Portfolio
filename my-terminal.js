@@ -42,16 +42,16 @@ term.exec('help', true);
 term.on('click', '.command', function() {
     const command = $(this).text();
     term.exec(command, { typing: true, delay: 50 });
- });
-
-function rand(max) {
-    return Math.floor(Math.random() * (max + 1));
-}
+});
 
 function ready() {
     const seed = rand(256);
     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
         .echo('<white>Welcome to my Terminal Portfolio</white>\n').resume();
+}
+
+function rand(max) {
+    return Math.floor(Math.random() * (max + 1));
 }
 
 function render(text) {

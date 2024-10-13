@@ -98,7 +98,7 @@ const user = 'guest';
 const server = 'freecodecamp.org';
 
 function prompt() {
-    return `<green>${user}@${server}</green>:<blue>${cwd}</blue>$ `;
+    return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
 }
 
 function print_dirs() {

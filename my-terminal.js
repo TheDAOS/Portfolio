@@ -76,6 +76,13 @@ const directories = {
 const root = '~';
 let cwd = root;
 
+const user = 'guest';
+const server = 'freecodecamp.org';
+
+function prompt() {
+    return `<green>${user}@${server}</green>:<blue>${cwd}</blue>$ `;
+}
+
 const commands = {
     help() {
         term.echo(`List of available commands: ${help}`, {raw: true});
@@ -110,7 +117,8 @@ const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,
-    completion: true
+    completion: true,
+    prompt
 });
 
 term.pause();

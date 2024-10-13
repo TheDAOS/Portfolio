@@ -179,7 +179,7 @@ term.on('click', '.directory', function() {
 function ready() {
     const seed = rand(256);
     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
-        .echo('<white>Welcome to my Terminal Portfolio</white>\n').resume();
+        .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
 }
 
 function rainbow(string, seed) {

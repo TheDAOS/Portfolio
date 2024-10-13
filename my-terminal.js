@@ -171,6 +171,11 @@ term.on('click', '.command', function() {
     term.exec(command, { typing: true, delay: 50 });
 });
 
+term.on('click', '.directory', function() {
+    const dir = $(this).text();
+    term.exec(`cd ~/${dir}`);
+});
+
 function ready() {
     const seed = rand(256);
     term.echo(() => rainbow(render('Terminal Portfolio'), seed))

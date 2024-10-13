@@ -3,6 +3,11 @@ const font = 'Slant';
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready);
 
+const formatter = new Intl.ListFormat('en', {
+    style: 'long',
+    type: 'conjunction',
+});
+
 const commands = {
     help() {
         term.echo(`List of available commands: ${help}`, {raw: true});
@@ -16,11 +21,6 @@ const commands = {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
     }
 };
-
-const formatter = new Intl.ListFormat('en', {
-    style: 'long',
-    type: 'conjunction',
-});
 
 // const command_list = ['clear'].concat(Object.keys(commands));
 // const help = formatter.format(command_list);

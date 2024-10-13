@@ -83,6 +83,12 @@ function prompt() {
     return `<green>${user}@${server}</green>:<blue>${cwd}</blue>$ `;
 }
 
+function print_dirs() {
+    term.echo(dirs.map(dir => {
+        return `<blue class="directory">${dir}</blue>`;
+    }).join('\n'));
+}
+
 const commands = {
     help() {
         term.echo(`List of available commands: ${help}`, {raw: true});
@@ -101,6 +107,38 @@ const commands = {
             cwd = root + '/' + dir;
         } else {
             this.error('Wrong directory');
+        }
+    },
+    ls(dir = null) {
+        if (dir) {
+            if (dir.match(/^~\/?$/)) {
+                // ls ~ or ls ~/
+                print_dirs();
+            } else if (dir.startsWith('~/')) {
+                const path = dir.substring(2);
+                const dirs = path.split('/');
+                if (dirs.length > 1) {
+                    this.error('Invalid directory');
+                } else {
+                    const dir = dirs[0];
+                    this.echo(directories[dir].join('\n'));
+                }
+            } else if (cwd === root) {
+                if (dir in directories) {
+                    this.echo(directories[dir].join('\n'));
+                } else {
+                    this.error('Invalid directory');
+                }
+            } else if (dir === '..') {
+                print_dirs();
+            } else {
+                this.error('Invalid directory');
+            }
+        } else if (cwd === root) {
+            print_dirs();
+        } else {
+            const dir = cwd.substring(2);
+            this.echo(directories[dir].join('\n'));
         }
     },
     test() {

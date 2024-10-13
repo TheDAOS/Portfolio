@@ -88,7 +88,7 @@ function prompt() {
 function print_dirs() {
     term.echo(dirs.map(dir => {
         return `<blue class="directory">${dir}</blue>`;
-    }).join('\n'));
+    }).join('\n'), {raw: true});
 }
 
 const commands = {

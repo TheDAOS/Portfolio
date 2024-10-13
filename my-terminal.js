@@ -73,6 +73,8 @@ const directories = {
     ].flat()
 };
 
+const dirs = Object.keys(directories);
+
 const root = '~';
 let cwd = root;
 

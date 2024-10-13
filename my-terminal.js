@@ -1,3 +1,19 @@
+/*
+    if 
+    echo('<white>Welcome to my Terminal Portfolio</white>\n')
+    not working
+    output shows <white>Welcome to my Terminal Portfolio</white> insted for showing "Welcome to my Terminal Portfolio" in white
+
+    to fix this
+
+    echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true})
+    add css
+        white {
+            color: white;
+        }
+    this seams to fix this
+*/
+
 const font = 'Slant';
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
@@ -8,6 +24,89 @@ const formatter = new Intl.ListFormat('en', {
     type: 'conjunction',
 });
 
+const directories = {
+    education: [
+        '',
+        '<white>education</white>',
+
+        '* <a href="https://en.wikipedia.org/wiki/Kielce_University_of_Technology">Kielce University of Technology</a> <yellow>"Computer Science"</yellow> 2002-2007 / 2011-2014',
+        '* <a href="https://pl.wikipedia.org/wiki/Szko%C5%82a_policealna">Post-secondary</a> Electronic School <yellow>"Computer Systems"</yellow> 2000-2002',
+        '* Electronic <a href="https://en.wikipedia.org/wiki/Technikum_(Polish_education)">Technikum</a> with major <yellow>"RTV"</yellow> 1995-2000',
+        ''
+    ],
+    projects: [
+        '',
+        '<white>Open Source projects</white>',
+        [
+            ['jQuery Terminal',
+             'https://terminal.jcubic.pl',
+             'library that adds terminal interface to websites'
+            ],
+            ['LIPS Scheme',
+             'https://lips.js.org',
+             'Scheme implementation in JavaScript'
+            ],
+            ['Sysend.js',
+             'https://jcu.bi/sysend',
+             'Communication between open tabs'
+            ],
+            ['Wayne',
+             'https://jcu.bi/wayne',
+             'Pure in browser HTTP requests'
+            ],
+        ].map(([name, url, description = '']) => {
+            return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
+        }),
+        ''
+    ].flat(),
+    skills: [
+        '',
+        '<white>languages</white>',
+
+        [
+            'JavaScript',
+            'TypeScript',
+            'Python',
+            'SQL',
+            'PHP',
+            'Bash'
+        ].map(lang => `* <yellow>${lang}</yellow>`),
+        '',
+        '<white>libraries</white>',
+        [
+            'React.js',
+            'Redux',
+            'Jest',
+        ].map(lib => `* <green>${lib}</green>`),
+        '',
+        '<white>tools</white>',
+        [
+            'Docker',
+            'git',
+            'GNU/Linux'
+        ].map(lib => `* <blue>${lib}</blue>`),
+        ''
+    ].flat()
+};
+
+const dirs = Object.keys(directories);
+
+const root = '~';
+let cwd = root;
+
+const user = 'guest';
+const server = 'thedaos.github.io';
+
+function prompt() {
+    return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
+}
+
+function print_dirs() {
+    term.echo(dirs.map(dir => {
+        return `<blue class="directory">${dir}</blue>`;
+    }).join('<br>'), {raw: true});
+}
+
 const commands = {
     help() {
         term.echo(`List of available commands: ${help}`, {raw: true});
@@ -15,6 +114,49 @@ const commands = {
     echo(...args) {
         if (args.length > 0) {
             term.echo(args.join(' '));
+        }
+    },
+    cd(dir = null) {
+        if (dir === null || (dir === '..' && cwd !== root)) {
+            cwd = root;
+        } else if (dir.startsWith('~/') && dirs.includes(dir.substring(2))) {
+            cwd = dir;
+        } else if (dirs.includes(dir)) {
+            cwd = root + '/' + dir;
+        } else {
+            this.error('Wrong directory');
+        }
+    },
+    ls(dir = null) {
+        if (dir) {
+            if (dir.match(/^~\/?$/)) {
+                // ls ~ or ls ~/
+                print_dirs();
+            } else if (dir.startsWith('~/')) {
+                const path = dir.substring(2);
+                const dirs = path.split('/');
+                if (dirs.length > 1) {
+                    this.error('Invalid directory');
+                } else {
+                    const dir = dirs[0];
+                    this.echo(directories[dir].join('\n'));
+                }
+            } else if (cwd === root) {
+                if (dir in directories) {
+                    this.echo(directories[dir].join('\n'));
+                } else {
+                    this.error('Invalid directory');
+                }
+            } else if (dir === '..') {
+                print_dirs();
+            } else {
+                this.error('Invalid directory');
+            }
+        } else if (cwd === root) {
+            print_dirs();
+        } else {
+            const dir = cwd.substring(2);
+            this.echo(directories[dir].join('\n'));
         }
     },
     test() {
@@ -31,7 +173,8 @@ const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,
-    completion: true
+    completion: true,
+    prompt
 });
 
 term.pause();
@@ -44,10 +187,15 @@ term.on('click', '.command', function() {
     term.exec(command, { typing: true, delay: 50 });
 });
 
+term.on('click', '.directory', function() {
+    const dir = $(this).text();
+    term.exec(`cd ~/${dir}`);
+});
+
 function ready() {
     const seed = rand(256);
     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
-        .echo('<white>Welcome to my Terminal Portfolio</white>\n').resume();
+        .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
 }
 
 function rainbow(string, seed) {

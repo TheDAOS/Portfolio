@@ -104,7 +104,7 @@ function prompt() {
 function print_dirs() {
     term.echo(dirs.map(dir => {
         return `<blue class="directory">${dir}</blue>`;
-    }).join('\n'), {raw: true});
+    }).join('<br>'), {raw: true});
 }
 
 const commands = {

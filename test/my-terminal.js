@@ -162,7 +162,7 @@ const command_list = ['clear'].concat(Object.keys(commands));
 const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</white>`);
 const help = formatter.format(formatted_list);
 
-const term = $('body').terminal(commands, {
+const term = $('#ti').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,

@@ -55,26 +55,28 @@ const directories = {
         '<white>languages</white>',
 
         [
-            'JavaScript',
-            'TypeScript',
             'Python',
+            'Bash',
+            'C / C# / C++',
+            'HTML / CSS',
             'SQL',
+            'JavaScript',
             'PHP',
-            'Bash'
+            'Go',
         ].map(lang => `* <yellow>${lang}</yellow>`),
         '',
         '<white>libraries</white>',
         [
-            'React.js',
-            'Redux',
-            'Jest',
+            'Django',
+            'Bootstrap',
+            'PyGames',
         ].map(lib => `* <green>${lib}</green>`),
         '',
         '<white>tools</white>',
         [
-            'Docker',
+            'GNU/Linux',
             'git',
-            'GNU/Linux'
+            'Microsoft / Google / Libre Office Suites',
         ].map(lib => `* <blue>${lib}</blue>`),
         ''
     ].flat()

@@ -162,26 +162,11 @@ const command_list = ['clear'].concat(Object.keys(commands));
 const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</white>`);
 const help = formatter.format(formatted_list);
 
-const term = $('body').terminal(commands, {
+const term = $('#ti').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,
-    completion(string) {
-        // in every function we can use `this` to reference term object
-        const cmd = this.get_command();
-        // we process the command to extract the command name
-        // and the rest of the command (the arguments as one string)
-        const { name, rest } = $.terminal.parse_command(cmd);
-        if (['cd', 'ls'].includes(name)) {
-            if (rest.startsWith('~/')) {
-                return dirs.map(dir => `~/${dir}`);
-            }
-            if (cwd === root) {
-                return dirs;
-            }
-        }
-        return Object.keys(commands);
-    },
+    completion: true,
     prompt
 });
 

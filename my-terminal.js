@@ -156,7 +156,7 @@ const commands = {
             print_dirs();
         } else {
             const dir = cwd.substring(2);
-            this.echo(directories[dir].join('\n'));
+            this.echo(directories[dir].join('<br>'), {raw: true});
         }
     },
     test() {

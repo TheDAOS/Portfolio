@@ -166,7 +166,22 @@ const term = $('body').terminal(commands, {
     greetings: false,
     checkArity: false,
     exit: false,
-    completion: true,
+    completion(string) {
+        // in every function we can use `this` to reference term object
+        const cmd = this.get_command();
+        // we process the command to extract the command name
+        // and the rest of the command (the arguments as one string)
+        const { name, rest } = $.terminal.parse_command(cmd);
+        if (['cd', 'ls'].includes(name)) {
+            if (rest.startsWith('~/')) {
+                return dirs.map(dir => `~/${dir}`);
+            }
+            if (cwd === root) {
+                return dirs;
+            }
+        }
+        return Object.keys(commands);
+    },
     prompt
 });
 

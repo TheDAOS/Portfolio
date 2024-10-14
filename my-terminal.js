@@ -28,31 +28,22 @@ const directories = {
     education: [
         '',
         '<white>education</white>',
-
-        '* <a href="https://en.wikipedia.org/wiki/Kielce_University_of_Technology">Kielce University of Technology</a> <yellow>"Computer Science"</yellow> 2002-2007 / 2011-2014',
-        '* <a href="https://pl.wikipedia.org/wiki/Szko%C5%82a_policealna">Post-secondary</a> Electronic School <yellow>"Computer Systems"</yellow> 2000-2002',
-        '* Electronic <a href="https://en.wikipedia.org/wiki/Technikum_(Polish_education)">Technikum</a> with major <yellow>"RTV"</yellow> 1995-2000',
+        '* <a href="https://www.linnkacademyindia.com/">Linnk Academy</a> <yellow>"Python Django Development"</yellow> May 2023-Nov 2023',
+        '* <a href="https://meserumelycollege.ac.in/">MES College Erumely</a> <yellow>"Computer Science"</yellow> 2020-2023',
+        '* <a href="https://en.wikipedia.org/wiki/Higher_Secondary_Certificate">Higher-secondary</a> <a href="https://marthomavhsskunnam.wixsite.com/vhseschool">MTVHSS</a> <yellow>"Computer Science and Infortanment Systems"</yellow> 2018-2020',
         ''
     ],
     projects: [
         '',
-        '<white>Open Source projects</white>',
+        '<white>Projects</white>',
         [
-            ['jQuery Terminal',
-             'https://terminal.jcubic.pl',
-             'library that adds terminal interface to websites'
+            ['7F2-3A',
+             'https://github.com/TheDAOS/7F2-3A',
+             'A group Learning management system Project'
             ],
-            ['LIPS Scheme',
-             'https://lips.js.org',
-             'Scheme implementation in JavaScript'
-            ],
-            ['Sysend.js',
-             'https://jcu.bi/sysend',
-             'Communication between open tabs'
-            ],
-            ['Wayne',
-             'https://jcu.bi/wayne',
-             'Pure in browser HTTP requests'
+            ['Portfolio',
+             'https://github.com/TheDAOS/Portfolio',
+             'An terminal-based portfolio website using jQuery Terminal'
             ],
         ].map(([name, url, description = '']) => {
             return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;
@@ -64,26 +55,28 @@ const directories = {
         '<white>languages</white>',
 
         [
-            'JavaScript',
-            'TypeScript',
             'Python',
+            'Bash',
+            'C / C# / C++',
+            'HTML / CSS',
             'SQL',
+            'JavaScript',
             'PHP',
-            'Bash'
+            'Go',
         ].map(lang => `* <yellow>${lang}</yellow>`),
         '',
         '<white>libraries</white>',
         [
-            'React.js',
-            'Redux',
-            'Jest',
+            'Django',
+            'Bootstrap',
+            'PyGames',
         ].map(lib => `* <green>${lib}</green>`),
         '',
         '<white>tools</white>',
         [
-            'Docker',
+            'GNU/Linux',
             'git',
-            'GNU/Linux'
+            'Microsoft / Google / Libre Office Suites',
         ].map(lib => `* <blue>${lib}</blue>`),
         ''
     ].flat()
@@ -156,7 +149,7 @@ const commands = {
             print_dirs();
         } else {
             const dir = cwd.substring(2);
-            this.echo(directories[dir].join('\n'));
+            this.echo(directories[dir].join('<br>'), {raw: true});
         }
     },
     test() {

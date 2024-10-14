@@ -35,23 +35,15 @@ const directories = {
     ],
     projects: [
         '',
-        '<white>Open Source projects</white>',
+        '<white>Projects</white>',
         [
-            ['jQuery Terminal',
-             'https://terminal.jcubic.pl',
-             'library that adds terminal interface to websites'
+            ['7F2-3A',
+             'https://github.com/TheDAOS/7F2-3A',
+             'A group Learning management system Project'
             ],
-            ['LIPS Scheme',
-             'https://lips.js.org',
-             'Scheme implementation in JavaScript'
-            ],
-            ['Sysend.js',
-             'https://jcu.bi/sysend',
-             'Communication between open tabs'
-            ],
-            ['Wayne',
-             'https://jcu.bi/wayne',
-             'Pure in browser HTTP requests'
+            ['Portfolio',
+             'https://github.com/TheDAOS/Portfolio',
+             'An terminal-based portfolio website using jQuery Terminal'
             ],
         ].map(([name, url, description = '']) => {
             return `* <a href="${url}">${name}</a> &mdash; <white>${description}</white>`;

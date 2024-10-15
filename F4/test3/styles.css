@@ -8,6 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    position: relative;
   }
   
   /* Terminal Box */
@@ -29,23 +30,24 @@ body {
     box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.3); /* Inner glow */
   }
   
-  /* Stronger Screen Glare */
-  .terminal::before {
+  /* Light Reflection Effect */
+  .terminal::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(
-      circle at 50% 10%, 
-      rgba(255, 255, 255, 0.4), /* Stronger white at center */
-      transparent 50%
+    background: linear-gradient(
+      to bottom right, 
+      rgba(255, 255, 255, 0.15) 20%, /* Light reflection starts */
+      rgba(255, 255, 255, 0.05) 40%, /* Lighter center */
+      transparent 60% /* Fade out */
     );
     pointer-events: none;
     z-index: 2;
     mix-blend-mode: screen;
-    opacity: 0.2; /* Increased opacity for more noticeable glare */
+    opacity: 0.3; /* You can adjust this for stronger reflections */
   }
   
   /* Text inside terminal */

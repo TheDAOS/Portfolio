@@ -10,7 +10,7 @@ body {
     position: relative;
   }
   
-  /* Full-Screen Terminal Box */
+  /* Full-Screen Terminal Box with CRT Screen Curve */
   .terminal {
     background-color: #1a1a1a; /* Slightly off-black to give depth */
     width: 100vw;
@@ -18,7 +18,6 @@ body {
     padding: 20px;
     box-sizing: border-box;
     text-align: left;
-    box-shadow: 0 0 15px #00ff00;
     position: relative;
     z-index: 1;
   
@@ -27,6 +26,9 @@ body {
     border-radius: 0; /* No border radius to cover entire screen */
     overflow: hidden;
     box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.3); /* Inner glow */
+  
+    /* CRT Screen Curve Effect */
+    transform: perspective(800px) rotateX(3deg) rotateY(4deg); /* Adds convex effect */
   }
   
   /* Enhanced, Smoother Light Reflection Effect */
@@ -39,9 +41,9 @@ body {
     height: 100%;
     background: linear-gradient(
       to bottom right, 
-      rgba(255, 255, 255, 0.2) 10%, /* Softer reflection */
-      rgba(255, 255, 255, 0.1) 30%, /* Slightly smoother transition */
-      transparent 60% /* Fade out */
+      rgba(255, 255, 255, 0.2) 10%, 
+      rgba(255, 255, 255, 0.1) 30%, 
+      transparent 60%
     ), 
     radial-gradient(
       circle at 30% 20%, 
@@ -50,7 +52,7 @@ body {
     );
     pointer-events: none;
     z-index: 2;
-    opacity: 0.25; /* Softer opacity for more subtle effect */
+    opacity: 0.25;
     mix-blend-mode: screen;
   }
   
@@ -58,7 +60,6 @@ body {
   .text p {
     margin: 10px 0;
     text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00; /* Glow effect on the text */
-    /* Removed Blur for Sharp Text */
   }
   
   /* Blinking Cursor */

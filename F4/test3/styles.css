@@ -13,8 +13,8 @@ body {
   /* Full-Screen Terminal Box with Convex Screen Effect */
   .terminal {
     background-color: #1a1a1a; /* Slightly off-black to give depth */
-    width: 100vw;
-    height: 100vh;
+    width: 100%; /* Use 100% to fill the width */
+    height: 100%; /* Use 100% to fill the height */
     padding: 20px;
     box-sizing: border-box;
     text-align: left;
@@ -27,11 +27,13 @@ body {
     box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.3); /* Inner glow */
   
     /* Convex screen effect: scaling inward at edges */
-    transform: scale(1.05);
-    filter: drop-shadow(0px 0px 5px rgba(0, 255, 0, 0.8));
+    transform: scale(1.05); /* Slight scale to create convexity */
+    filter: drop-shadow(0px 0px 5px rgba(0, 255, 0, 0.8)); /* Adds glow */
   
-    /* CRT Screen Effect */
-    filter: contrast(1.4) saturate(1.2) brightness(0.8);
+    /* Ensure it remains centered */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Enhanced, Smoother Light Reflection Effect */

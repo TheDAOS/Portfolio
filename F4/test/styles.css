@@ -10,18 +10,42 @@ body {
 }
 
 #terminal {
+    position: relative;
     width: 80%;
     max-width: 800px;
     border: 2px solid #00FF00;
     padding: 10px;
     box-shadow: 0 0 10px #00FF00;
     border-radius: 5px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
+    animation: flicker 1.5s infinite alternate;
+    filter: contrast(1.2);
+}
+
+/* CRT scan line effect */
+#terminal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.1) 50%, 
+        transparent 50%
+    );
+    background-size: 100% 5px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 #output {
     height: 300px;
     overflow-y: auto;
     margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
 }
 
 #input {
@@ -31,4 +55,18 @@ body {
     border: none;
     outline: none;
     font-size: 18px;
+    z-index: 2;
+}
+
+/* Flicker animation */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
+/* Curve effect */
+#terminal {
+    border-radius: 30px; /* Slightly curved edges */
+    overflow: hidden; /* Prevents overflow from the curvature */
 }

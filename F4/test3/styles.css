@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: black;
+    color: #00ff00; /* Green color typical of old terminals */
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .terminal {
+    background-color: #1a1a1a; /* Slightly off-black to give depth */
+    padding: 20px;
+    border: 5px solid #00ff00;
+    width: 80%;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: 0 0 15px #00ff00;
+  }
+  
+  .text p {
+    margin: 10px 0;
+  }
+  
+  .blinking-cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: #00ff00;
+    animation: blink 1s step-start infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  

@@ -10,7 +10,7 @@ body {
     position: relative;
   }
   
-  /* Full-Screen Terminal Box with CRT Screen Curve */
+  /* Full-Screen Terminal Box with Convex Screen Effect */
   .terminal {
     background-color: #1a1a1a; /* Slightly off-black to give depth */
     width: 100vw;
@@ -21,14 +21,17 @@ body {
     position: relative;
     z-index: 1;
   
-    /* CRT Screen Effect */
-    filter: contrast(1.4) saturate(1.2) brightness(0.8);
-    border-radius: 0; /* No border radius to cover entire screen */
+    /* CRT Screen Curve Effect - Convex */
+    border-radius: 50px; /* Curved edges for the convex effect */
     overflow: hidden;
     box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.3); /* Inner glow */
   
-    /* CRT Screen Curve Effect */
-    transform: perspective(800px) rotateX(3deg) rotateY(4deg); /* Adds convex effect */
+    /* Convex screen effect: scaling inward at edges */
+    transform: scale(1.05);
+    filter: drop-shadow(0px 0px 5px rgba(0, 255, 0, 0.8));
+  
+    /* CRT Screen Effect */
+    filter: contrast(1.4) saturate(1.2) brightness(0.8);
   }
   
   /* Enhanced, Smoother Light Reflection Effect */

@@ -1,0 +1,109 @@
+/* Body Setup */
+body {
+    background-color: black;
+    color: #00ff00; /* Green color typical of old terminals */
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Full-Screen Terminal Box */
+  .terminal {
+    background-color: #1a1a1a; /* Slightly off-black to give depth */
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    box-shadow: 0 0 15px #00ff00;
+    position: relative;
+    z-index: 1;
+  
+    /* CRT Screen Effect */
+    filter: contrast(1.4) saturate(1.2) brightness(0.8);
+    border-radius: 0; /* No border radius to cover entire screen */
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.3); /* Inner glow */
+  }
+  
+  /* Enhanced, Smoother Light Reflection Effect */
+  .terminal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom right, 
+      rgba(255, 255, 255, 0.2) 10%, /* Softer reflection */
+      rgba(255, 255, 255, 0.1) 30%, /* Slightly smoother transition */
+      transparent 60% /* Fade out */
+    ), 
+    radial-gradient(
+      circle at 30% 20%, 
+      rgba(255, 255, 255, 0.15), 
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.25; /* Softer opacity for more subtle effect */
+    mix-blend-mode: screen;
+  }
+  
+  /* Text inside terminal */
+  .text p {
+    margin: 10px 0;
+    text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00; /* Glow effect on the text */
+    /* Removed Blur for Sharp Text */
+  }
+  
+  /* Blinking Cursor */
+  .blinking-cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: #00ff00;
+    animation: blink 1s step-start infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  /* CRT Scan Lines Effect */
+  body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      transparent 2px,
+      rgba(0, 255, 0, 0.03) 3px
+    );
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 1;
+  }
+  
+  /* Optional flickering animation for a more authentic CRT vibe */
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      opacity: 1;
+    }
+    20%, 24%, 55% {
+      opacity: 0.8;
+    }
+  }
+  
+  /* Apply flickering effect to the whole body */
+  body {
+    animation: flicker 0.08s infinite;
+  }
+  

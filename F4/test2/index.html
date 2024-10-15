@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fallout 4 Terminal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.34.0/css/jquery.terminal.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: #33ff33;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .terminal-container {
+            padding: 20px;
+            border: 2px solid #33ff33;
+            width: 80%;
+            height: 500px;
+            margin: 50px auto;
+        }
+        .terminal {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-container">
+        <div id="terminal"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#terminal').terminal(function(command) {
+                if (command === "help") {
+                    this.echo("Available commands:\n- status\n- reboot\n- clear\n- exit");
+                } else if (command === "status") {
+                    this.echo("SYSTEM STATUS: All systems nominal.");
+                } else if (command === "reboot") {
+                    this.echo("Rebooting system...");
+                } else if (command === "exit") {
+                    this.echo("Goodbye.");
+                    this.logout();
+                } else {
+                    this.echo("Unknown command. Type 'help' for a list of commands.");
+                }
+            }, {
+                greetings: "ROBCO INDUSTRIES UNIFIED OPERATING SYSTEM\nCOPYRIGHT 2075-2077 ROBCO INDUSTRIES",
+                name: 'fallout_terminal',
+                prompt: '> ',
+                height: 500,
+                width: '100%',
+                exit: false,
+                clear: false,
+                prompt_history: true,
+                completion: true,
+                colors: {
+                    green: "#33ff33",
+                },
+            });
+        });
+    </script>
+        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.34.0/js/jquery.terminal.min.js"></script>
+</body>
+</html>

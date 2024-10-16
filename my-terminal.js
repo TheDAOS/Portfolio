@@ -157,12 +157,26 @@ const commands = {
     async joke() {
         const res = await fetch(joke_url);
         const data = await res.json();
-        if (data.type == 'twopart') {
-            this.echo(`Q: ${data.setup}`);
-            this.echo(`A: ${data.delivery}`);
-        } else if (data.type === 'single') {
-            this.echo(data.joke, { delay: 50, typing: true });
-        }
+        (async () => {
+            if (data.type == 'twopart') {
+                const prompt = this.get_prompt();
+                this.set_prompt('');
+                await this.echo(`Q: ${data.setup}`, {
+                    delay: 50,
+                    typing: true
+                });
+                await this.echo(`A: ${data.delivery}`, {
+                    delay: 50,
+                    typing: true
+                });
+                this.set_prompt(prompt);
+            } else if (data.type === 'single') {
+                await this.echo(data.joke, {
+                    delay: 50,
+                    typing: true
+                });
+            }
+        })();
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');

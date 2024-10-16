@@ -90,6 +90,8 @@ let cwd = root;
 const user = 'guest';
 const server = 'thedaos.github.io';
 
+const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
+
 function prompt() {
     return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
 }
@@ -150,6 +152,16 @@ const commands = {
         } else {
             const dir = cwd.substring(2);
             this.echo(directories[dir].join('<br>'), {raw: true});
+        }
+    },
+    async joke() {
+        const res = await fetch(joke_url);
+        const data = await res.json();
+        if (data.type == 'twopart') {
+            this.echo(`Q: ${data.setup}`);
+            this.echo(`A: ${data.delivery}`);
+        } else if (data.type === 'single') {
+            this.echo(data.joke);
         }
     },
     test() {

@@ -161,7 +161,7 @@ const commands = {
             this.echo(`Q: ${data.setup}`);
             this.echo(`A: ${data.delivery}`);
         } else if (data.type === 'single') {
-            this.echo(data.joke);
+            this.echo(data.joke, { delay: 50, typing: true });
         }
     },
     test() {

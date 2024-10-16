@@ -179,7 +179,7 @@ const commands = {
         })();
     },
     credits() {
-        return [
+        const creditsText = [
             '',
             '<white>Used libraries:</white>',
             '* <a href="https://terminal.jcubic.pl">jQuery Terminal</a>',
@@ -187,7 +187,9 @@ const commands = {
             '* <a href="https://github.com/jcubic/isomorphic-lolcat">Isomorphic Lolcat</a>',
             '* <a href="https://jokeapi.dev/">Joke API</a>',
             ''
-        ].join('\n');
+        ].join('<br>');
+    
+        this.echo(creditsText, { raw: true });
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');

@@ -90,6 +90,8 @@ let cwd = root;
 const user = 'guest';
 const server = 'thedaos.github.io';
 
+const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
+
 function prompt() {
     return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
 }
@@ -151,6 +153,43 @@ const commands = {
             const dir = cwd.substring(2);
             this.echo(directories[dir].join('<br>'), {raw: true});
         }
+    },
+    async joke() {
+        const res = await fetch(joke_url);
+        const data = await res.json();
+        (async () => {
+            if (data.type == 'twopart') {
+                const prompt = this.get_prompt();
+                this.set_prompt('');
+                await this.echo(`Q: ${data.setup}`, {
+                    delay: 50,
+                    typing: true
+                });
+                await this.echo(`A: ${data.delivery}`, {
+                    delay: 50,
+                    typing: true
+                });
+                this.set_prompt(prompt);
+            } else if (data.type === 'single') {
+                await this.echo(data.joke, {
+                    delay: 50,
+                    typing: true
+                });
+            }
+        })();
+    },
+    credits() {
+        const creditsText = [
+            '',
+            '<white>Used libraries:</white>',
+            '* <a href="https://terminal.jcubic.pl">jQuery Terminal</a>',
+            '* <a href="https://github.com/patorjk/figlet.js/">Figlet.js</a>',
+            '* <a href="https://github.com/jcubic/isomorphic-lolcat">Isomorphic Lolcat</a>',
+            '* <a href="https://jokeapi.dev/">Joke API</a>',
+            ''
+        ].join('<br>');
+    
+        this.echo(creditsText, { raw: true });
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');

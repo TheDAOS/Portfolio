@@ -93,7 +93,8 @@ const server = 'thedaos.github.io';
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 function prompt() {
-    return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
+    // return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
+    return `>> `;
 }
 
 function print_dirs() {

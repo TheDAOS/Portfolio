@@ -93,7 +93,8 @@ const server = 'thedaos.github.io';
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 function prompt() {
-    return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
+    // return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
+    return `> `;
 }
 
 function print_dirs() {
@@ -239,9 +240,13 @@ term.on('click', '.directory', function() {
     term.exec(`cd ~/${dir}`);
 });
 
+// function ready() {
+//     const seed = rand(256);
+//     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
+//         .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
+// }
 function ready() {
-    const seed = rand(256);
-    term.echo(() => rainbow(render('Terminal Portfolio'), seed))
+    term.echo(render('Terminal Portfolio'))
         .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
 }
 

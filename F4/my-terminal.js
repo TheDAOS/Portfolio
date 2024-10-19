@@ -17,7 +17,7 @@
 const font = 'Slant';
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
-figlet.preloadFonts([font], ready);
+figlet.preloadFonts([font], ready); // greetings
 
 const formatter = new Intl.ListFormat('en', {
     style: 'long',
@@ -87,13 +87,24 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
+// const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
+const startup = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n
+COPYRIGHT 2075 ROBCO(R)
+LOADER V1.1
+EXEC VERSION 41.10
+64k RAM SYSTEM
+38911 BYTES FREE
+NO HOLOTAPE FOUND
+LOAD ROM(1): DEITRIX 303
+\n\n`
+
+
 const user = 'guest';
 const server = 'thedaos.github.io';
 
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 function prompt() {
-    // return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
     return `> `;
 }
 
@@ -194,6 +205,15 @@ const commands = {
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
+    },
+    test2() {
+        term.echo(generateAsterisks());
+    },
+    test3() {
+        term.echo('******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************');
+    },
+    reboot() {
+        term.echo(startup, { delay: 50, typing: true });
     }
 };
 
@@ -227,8 +247,10 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
+term.exec('reboot', true)
+
 // to show the help at start without exicuting it
-term.exec('help', true);
+// term.exec('help', true);
 
 term.on('click', '.command', function() {
     const command = $(this).text();
@@ -241,24 +263,30 @@ term.on('click', '.directory', function() {
 });
 
 // function ready() {
-//     const seed = rand(256);
-//     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
-//         .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
+//     term.echo(render('Terminal Portfolio'))
+//         .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
 // }
+
 function ready() {
-    term.echo(render('Terminal Portfolio'))
-        .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
+    term.resume();
 }
 
-function rainbow(string, seed) {
-    return lolcat.rainbow(function(char, color) {
-        char = $.terminal.escape_brackets(char);
-        return `[[;${hex(color)};]${char}]`;
-    }, string, seed).join('\n');
-}
+function generateAsterisks() {
+    const asteriskSymbol = "*";
+    const pageWidth = window.innerWidth;
+    const symbolLength = asteriskSymbol.length * 2;
+    const title = " PIP-OS(R) V7.1.0.8 ";
+    const titleLength = title.length * 2;
+    const numSymbols = Math.ceil(pageWidth / (symbolLength + titleLength + symbolLength));  // Calculate how many times the symbol fits in the width
 
-function rand(max) {
-    return Math.floor(Math.random() * (max + 1));
+    let result = "";
+    let totalAsterisk = "";
+    for (let i = 0; i < numSymbols; i++) {
+        totalAsterisk += asteriskSymbol;
+        result = totalAsterisk + title + totalAsterisk;
+    }
+
+    return result
 }
 
 function render(text) {
@@ -272,10 +300,4 @@ function render(text) {
 
 function trim(str) {
     return str.replace(/[\n\s]+$/, '');
-}
-
-function hex(color) {
-    return '#' + [color.red, color.green, color.blue].map(n => {
-        return n.toString(16).padStart(2, '0');
-    }).join('');
 }

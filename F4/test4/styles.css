@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+}
+
+#terminal {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+}
+
+#output {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid green;
+    padding: 10px;
+}
+
+#input {
+    border: none;
+    border-top: 1px solid green;
+    background: black;
+    color: white;
+    padding: 10px;
+    outline: none;
+}

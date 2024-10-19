@@ -63,21 +63,21 @@ const directories = {
             'JavaScript',
             'PHP',
             'Go',
-        ].map(lang => `* <yellow>${lang}</yellow>`),
+        ].map(lang => `* <white>${lang}</white>`),
         '',
         '<white>libraries</white>',
         [
             'Django',
             'Bootstrap',
             'PyGames',
-        ].map(lib => `* <green>${lib}</green>`),
+        ].map(lib => `* <white>${lib}</white>`),
         '',
         '<white>tools</white>',
         [
             'GNU/Linux',
             'git',
             'Microsoft / Google / Libre Office Suites',
-        ].map(lib => `* <blue>${lib}</blue>`),
+        ].map(lib => `* <white>${lib}</white>`),
         ''
     ].flat()
 };
@@ -99,7 +99,7 @@ function prompt() {
 
 function print_dirs() {
     term.echo(dirs.map(dir => {
-        return `<blue class="directory">${dir}</blue>`;
+        return `<white class="directory">${dir}</white>`;
     }).join('<br>'), {raw: true});
 }
 
@@ -247,7 +247,7 @@ term.on('click', '.directory', function() {
 // }
 function ready() {
     term.echo(render('Terminal Portfolio'))
-        .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
+        .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
 }
 
 function rainbow(string, seed) {

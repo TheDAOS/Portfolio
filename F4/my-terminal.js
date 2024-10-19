@@ -14,12 +14,10 @@
     this seams to fix this
 */
 
-const greetings = `******************Welcome to ROBCO Industries (TM) Termlink******************`
-
 const font = 'Slant';
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
-figlet.preloadFonts([font], ready);
+figlet.preloadFonts([font], ready); // greetings
 
 const formatter = new Intl.ListFormat('en', {
     style: 'long',
@@ -88,6 +86,8 @@ const dirs = Object.keys(directories);
 
 const root = '~';
 let cwd = root;
+
+const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
 
 const user = 'guest';
 const server = 'thedaos.github.io';
@@ -195,6 +195,9 @@ const commands = {
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
+    },
+    reboot() {
+        term.echo(startup, { delay: 50, typing: true });
     }
 };
 
@@ -204,8 +207,7 @@ const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</w
 const help = formatter.format(formatted_list);
 
 const term = $('body').terminal(commands, {
-    // greetings: false,
-    greetings,
+    greetings: false,
     checkArity: false,
     exit: false,
     completion(string) {
@@ -229,8 +231,10 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
+term.exec('reboot', true)
+
 // to show the help at start without exicuting it
-term.exec('help', true);
+// term.exec('help', true);
 
 term.on('click', '.command', function() {
     const command = $(this).text();

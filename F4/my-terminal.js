@@ -88,7 +88,16 @@ const root = '~';
 let cwd = root;
 
 // const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
-const startup = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************`
+const startup = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n
+\n
+\n
+COPYRIGHT 2075 ROBCO(R)\n
+LOADER V1.1\n
+EXEC VERSION 41.10\n
+64k RAM SYSTEM\n
+38911 BYTES FREE\n
+NO HOLOTAPE FOUND\n
+LOAD ROM(1): DEITRIX 303\n`
 
 
 const user = 'guest';

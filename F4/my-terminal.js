@@ -14,6 +14,8 @@
     this seams to fix this
 */
 
+const greetings = `******************Welcome to ROBCO Industries (TM) Termlink******************`
+
 const font = 'Slant';
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
@@ -202,7 +204,8 @@ const formatted_list = command_list.map(cmd => `<white class="command">${cmd}</w
 const help = formatter.format(formatted_list);
 
 const term = $('body').terminal(commands, {
-    greetings: false,
+    // greetings: false,
+    greetings,
     checkArity: false,
     exit: false,
     completion(string) {

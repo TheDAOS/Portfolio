@@ -247,7 +247,7 @@ term.on('click', '.directory', function() {
 // }
 function ready() {
     term.echo(render('Terminal Portfolio'))
-        .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
+        .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
 }
 
 function rainbow(string, seed) {

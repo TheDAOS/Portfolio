@@ -199,6 +199,9 @@ const commands = {
     test2() {
         term.echo(generateAsterisks());
     },
+    test3() {
+        term.echo('******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************');
+    },
     reboot() {
         term.echo(startup, { delay: 50, typing: true });
     }

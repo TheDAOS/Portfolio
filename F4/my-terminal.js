@@ -196,6 +196,9 @@ const commands = {
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
     },
+    test2() {
+        term.echo(generateAsterisks());
+    },
     reboot() {
         term.echo(startup, { delay: 50, typing: true });
     }
@@ -253,6 +256,24 @@ term.on('click', '.directory', function() {
 
 function ready() {
     term.resume();
+}
+
+function generateAsterisks() {
+    const asteriskSymbol = "*";
+    const pageWidth = window.innerWidth;
+    const symbolLength = asteriskSymbol.length * 2;
+    const title = " PIP-OS(R) V7.1.0.8 ";
+    const titleLength = title.length * 2;
+    const numSymbols = Math.ceil(pageWidth / (symbolLength + titleLength + symbolLength));  // Calculate how many times the symbol fits in the width
+
+    let result = "";
+    let totalAsterisk = "";
+    for (let i = 0; i < numSymbols; i++) {
+        totalAsterisk += asteriskSymbol;
+        result = totalAsterisk + title + totalAsterisk;
+    }
+
+    return result
 }
 
 function render(text) {

@@ -93,7 +93,6 @@ const server = 'thedaos.github.io';
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 function prompt() {
-    // return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
     return `> `;
 }
 
@@ -240,25 +239,9 @@ term.on('click', '.directory', function() {
     term.exec(`cd ~/${dir}`);
 });
 
-// function ready() {
-//     const seed = rand(256);
-//     term.echo(() => rainbow(render('Terminal Portfolio'), seed))
-//         .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
-// }
 function ready() {
     term.echo(render('Terminal Portfolio'))
         .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
-}
-
-function rainbow(string, seed) {
-    return lolcat.rainbow(function(char, color) {
-        char = $.terminal.escape_brackets(char);
-        return `[[;${hex(color)};]${char}]`;
-    }, string, seed).join('\n');
-}
-
-function rand(max) {
-    return Math.floor(Math.random() * (max + 1));
 }
 
 function render(text) {
@@ -272,10 +255,4 @@ function render(text) {
 
 function trim(str) {
     return str.replace(/[\n\s]+$/, '');
-}
-
-function hex(color) {
-    return '#' + [color.red, color.green, color.blue].map(n => {
-        return n.toString(16).padStart(2, '0');
-    }).join('');
 }

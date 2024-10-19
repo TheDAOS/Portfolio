@@ -87,7 +87,9 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
-const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
+// const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
+const startup = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************`
+
 
 const user = 'guest';
 const server = 'thedaos.github.io';

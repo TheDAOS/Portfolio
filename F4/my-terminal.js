@@ -88,6 +88,13 @@ const root = '~';
 let cwd = root;
 
 // const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
+const startup0 = `████████  ████ ████████     ████████   ███████  ██    ██ 
+██     ██  ██  ██     ██    ██     ██ ██     ██  ██  ██  
+██     ██  ██  ██     ██    ██     ██ ██     ██   ████   
+████████   ██  ████████     ████████  ██     ██    ██    
+██         ██  ██           ██     ██ ██     ██    ██    
+██         ██  ██           ██     ██ ██     ██    ██    
+██        ████ ██           ████████   ███████     ██    `
 const startup1 = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n`
 const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
@@ -209,9 +216,12 @@ const commands = {
         term.echo(generateAsterisks());
     },
     reboot() {
+        // term.echo(startup0,{ delay: 50})
+        // this.clear()
         term.echo(startup1, { delay: 50, typing: true })
             .then(() => term.echo(startup2, {typing: true}))
-            .then(() => this.clear());
+            .then(() => this.clear())
+            .then(() => term.echo('hello' {typing: true}));
     }
 };
 

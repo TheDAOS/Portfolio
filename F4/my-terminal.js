@@ -88,15 +88,14 @@ const root = '~';
 let cwd = root;
 
 // const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
-const startup = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n
-COPYRIGHT 2075 ROBCO(R)
+const startup1 = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n`
+const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
 EXEC VERSION 41.10
 64k RAM SYSTEM
 38911 BYTES FREE
 NO HOLOTAPE FOUND
-LOAD ROM(1): DEITRIX 303
-\n\n`
+LOAD ROM(1): DEITRIX 303`
 
 
 const user = 'guest';
@@ -213,7 +212,9 @@ const commands = {
         term.echo('******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************');
     },
     reboot() {
-        term.echo(startup, { delay: 50, typing: true });
+        term.echo(startup1, { delay: 50, typing: true })
+            .then(() => term.echo(startup2, {typing: true}))
+            .then(() => this.clear());
     }
 };
 

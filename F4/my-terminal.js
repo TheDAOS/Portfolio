@@ -223,7 +223,16 @@ const commands = {
             .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
             .then(() => this.clear())
             .then(() => term.echo('hello', { typing: true }));
-    }
+    },
+    async reboot2() {
+        try {
+            await this.clear();
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            term.echo(startup0);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    }    
 };
 
 // clear is default command that you can turn off with an option

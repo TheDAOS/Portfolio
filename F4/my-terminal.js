@@ -235,12 +235,15 @@ const commands = {
     },
     reboottest() {
         term.echo(startup0, { delay: 50, typing: false })
-            .then(() => this.clear())
-            .then(() => term.echo(startup1, { typing: true }))
-            .then(() => term.echo(startup2, { typing: true }))
-            .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
-            .then(() => this.clear())
-            .then(() => term.echo('hello', { typing: true }));
+        .then(() => this.clear()) // Ensure this.clear() returns a promise
+        .then(() => term.echo(startup1, { typing: true }))
+        .then(() => term.echo(startup2, { typing: true }))
+        .then(() => new Promise(resolve => setTimeout(resolve, 2000))) // Wait for 2 seconds
+        .then(() => this.clear()) // Clear again before showing "hello"
+        .then(() => term.echo('hello', { typing: true }))
+        .catch(error => {
+            console.error("An error occurred:", error); // Handle any errors
+        });
     }
 };
 

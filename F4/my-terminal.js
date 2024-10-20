@@ -213,7 +213,7 @@ const commands = {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
     },
     test2() {
-        term.echo(generateAsterisks());
+        term.echo(startup0)
     },
     reboot() {
         // term.echo(startup0, { delay: 50 })
@@ -232,7 +232,16 @@ const commands = {
         } catch (error) {
             console.error('An error occurred:', error);
         }
-    }    
+    },
+    reboottest() {
+        term.echo(startup0, { delay: 50, typing: false })
+            .then(() => this.clear())
+            .then(() => term.echo(startup1, { typing: true }))
+            .then(() => term.echo(startup2, { typing: true }))
+            .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
+            .then(() => this.clear())
+            .then(() => term.echo('hello', { typing: true }));
+    }
 };
 
 // clear is default command that you can turn off with an option
@@ -287,24 +296,6 @@ term.on('click', '.directory', function() {
 
 function ready() {
     term.resume();
-}
-
-function generateAsterisks() {
-    const asteriskSymbol = "*";
-    const pageWidth = window.innerWidth;
-    const symbolLength = asteriskSymbol.length * 2;
-    const title = " PIP-OS(R) V7.1.0.8 ";
-    const titleLength = title.length * 2;
-    const numSymbols = Math.ceil(pageWidth / (symbolLength + titleLength + symbolLength));  // Calculate how many times the symbol fits in the width
-
-    let result = "";
-    let totalAsterisk = "";
-    for (let i = 0; i < numSymbols; i++) {
-        totalAsterisk += asteriskSymbol;
-        result = totalAsterisk + title + totalAsterisk;
-    }
-
-    return result
 }
 
 function render(text) {

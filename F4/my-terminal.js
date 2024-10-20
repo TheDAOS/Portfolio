@@ -111,7 +111,7 @@ const server = 'thedaos.github.io';
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 function prompt() {
-    return `> `;
+    return ``;
 }
 
 function print_dirs() {
@@ -216,12 +216,13 @@ const commands = {
         term.echo(generateAsterisks());
     },
     reboot() {
-        // term.echo(startup0,{ delay: 50})
-        // this.clear()
-        term.echo(startup1, { delay: 50, typing: true })
-            .then(() => term.echo(startup2, {typing: true}))
+        // term.echo(startup0, { delay: 50 })
+        //     .then(() => this.clear())
+        term.echo(startup1, { typing: true })
+            .then(() => term.echo(startup2, { typing: true }))
+            .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
             .then(() => this.clear())
-            .then(() => term.echo('hello' {typing: true}));
+            .then(() => term.echo('hello', { typing: true }));
     }
 };
 

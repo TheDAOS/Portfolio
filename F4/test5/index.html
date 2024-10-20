@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Style Terminal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.34.0/css/jquery.terminal.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: limegreen;
+            font-family: monospace;
+        }
+        .terminal-output {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div id="terminal"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.34.0/js/jquery.terminal.min.js"></script>
+<script>
+    $(function() {
+        $('#terminal').terminal(function(command) {
+            // Fake command output
+            if (command !== '') {
+                this.echo("Executing command: " + command);
+            } else {
+                this.echo('> ');
+            }
+        }, {
+            greetings: "Welcome to the Matrix",
+            name: 'matrix_terminal',
+            height: 400,
+            prompt: 'user@matrix:~$ ',
+            outputLimit: 2000,
+            completion: true
+        });
+
+        // Simulate the green text effect
+        setInterval(function() {
+            $('#terminal').terminal().echo(
+                Array(100).fill().map(() => Math.random().toString(36).substring(2, 8)).join(' ')
+            );
+        }, 1000); // Adjust the speed for effect
+    });
+</script>
+
+</body>
+</html>

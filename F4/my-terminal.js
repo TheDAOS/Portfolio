@@ -88,15 +88,21 @@ const root = '~';
 let cwd = root;
 
 // const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
-const startup = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n
-COPYRIGHT 2075 ROBCO(R)
+const startup0 = `████████  ████ ████████     ████████   ███████  ██    ██ 
+██     ██  ██  ██     ██    ██     ██ ██     ██  ██  ██  
+██     ██  ██  ██     ██    ██     ██ ██     ██   ████   
+████████   ██  ████████     ████████  ██     ██    ██    
+██         ██  ██           ██     ██ ██     ██    ██    
+██         ██  ██           ██     ██ ██     ██    ██    
+██        ████ ██           ████████   ███████     ██    `
+const startup1 = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n`
+const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
 EXEC VERSION 41.10
 64k RAM SYSTEM
 38911 BYTES FREE
 NO HOLOTAPE FOUND
-LOAD ROM(1): DEITRIX 303
-\n\n`
+LOAD ROM(1): DEITRIX 303`
 
 
 const user = 'guest';
@@ -105,7 +111,7 @@ const server = 'thedaos.github.io';
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 function prompt() {
-    return `> `;
+    return ``;
 }
 
 function print_dirs() {
@@ -207,13 +213,37 @@ const commands = {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
     },
     test2() {
-        term.echo(generateAsterisks());
-    },
-    test3() {
-        term.echo('******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************');
+        term.echo(startup0)
     },
     reboot() {
-        term.echo(startup, { delay: 50, typing: true });
+        // term.echo(startup0, { delay: 50 })
+        //     .then(() => this.clear())
+        term.echo(startup1, { typing: true })
+            .then(() => term.echo(startup2, { typing: true }))
+            .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
+            .then(() => this.clear())
+            .then(() => term.echo('hello', { typing: true }));
+    },
+    async reboot2() {
+        try {
+            await this.clear();
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            term.echo(startup0);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    },
+    reboottest() {
+        term.echo(startup0, { delay: 50, typing: false })
+        .then(() => this.clear()) // Ensure this.clear() returns a promise
+        .then(() => term.echo(startup1, { typing: true }))
+        .then(() => term.echo(startup2, { typing: true }))
+        .then(() => new Promise(resolve => setTimeout(resolve, 2000))) // Wait for 2 seconds
+        .then(() => this.clear()) // Clear again before showing "hello"
+        .then(() => term.echo('hello', { typing: true }))
+        .catch(error => {
+            console.error("An error occurred:", error); // Handle any errors
+        });
     }
 };
 
@@ -269,24 +299,6 @@ term.on('click', '.directory', function() {
 
 function ready() {
     term.resume();
-}
-
-function generateAsterisks() {
-    const asteriskSymbol = "*";
-    const pageWidth = window.innerWidth;
-    const symbolLength = asteriskSymbol.length * 2;
-    const title = " PIP-OS(R) V7.1.0.8 ";
-    const titleLength = title.length * 2;
-    const numSymbols = Math.ceil(pageWidth / (symbolLength + titleLength + symbolLength));  // Calculate how many times the symbol fits in the width
-
-    let result = "";
-    let totalAsterisk = "";
-    for (let i = 0; i < numSymbols; i++) {
-        totalAsterisk += asteriskSymbol;
-        result = totalAsterisk + title + totalAsterisk;
-    }
-
-    return result
 }
 
 function render(text) {

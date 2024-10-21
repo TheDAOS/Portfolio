@@ -102,15 +102,14 @@ EXEC VERSION 41.10
 38911 BYTES FREE
 NO HOLOTAPE FOUND
 LOAD ROM(1): DEITRIX 303`
-const startup3 = `********** Welcome to ROBCO Industries (TM) Termlink **********`
-
-const user = 'guest';
-const server = 'thedaos.github.io';
+const startup3 = `********** Welcome to ROBCO Industries (TM) Termlink **********\n`
 
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
+let prompt_var = ``
+
 function prompt() {
-    return ``;
+    return prompt_var;
 }
 
 function print_dirs() {
@@ -217,6 +216,7 @@ const commands = {
     async reboot() {
         try {
             await this.clear();
+            prompt_var = ``
             term.echo(startup0);
             await new Promise(resolve => setTimeout(resolve, 2000));
             await this.clear();
@@ -224,6 +224,7 @@ const commands = {
                 .then(() => term.echo(startup2, { typing: true }))
                 .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
                 .then(() => this.clear())
+                .then(() => prompt_var = `>`)
                 .then(() => term.echo(startup3, { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);

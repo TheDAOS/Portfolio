@@ -215,25 +215,21 @@ const commands = {
     test2() {
         term.echo(startup0)
     },
-    reboot() {
-        // term.echo(startup0, { delay: 50 })
-        //     .then(() => this.clear())
-        term.echo(startup1, { typing: true })
-            .then(() => term.echo(startup2, { typing: true }))
-            .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
-            .then(() => this.clear())
-            .then(() => term.echo('hello', { typing: true }));
-    },
-    async reboot2() {
+    async reboot() {
         try {
             await this.clear();
             term.echo(startup0);
             await new Promise(resolve => setTimeout(resolve, 2000));
             await this.clear();
+            term.echo(startup1, { typing: true })
+                .then(() => term.echo(startup2, { typing: true }))
+                .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
+                .then(() => this.clear())
+                .then(() => term.echo('hello', { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);
         }
-    },
+    }
 };
 
 // clear is default command that you can turn off with an option
@@ -266,11 +262,7 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
-term.exec('reboot2', true)
-    .then(() => term.exec('reboot', true));
-
-// to show the help at start without exicuting it
-// term.exec('help', true);
+term.exec('reboot', true);
 
 term.on('click', '.command', function() {
     const command = $(this).text();

@@ -14,7 +14,14 @@
     this seams to fix this
 */
 
-const font = 'Slant';
+// const font = 'Slant';
+// const font = 'DiamFont';
+// const font = 'Lean';
+// const font = `Big Money-ne`;
+// const font = `RubiFont`;
+const font = `Star Wars`;
+// const font = `ANSI Regular`;
+
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready); // greetings
@@ -133,7 +140,7 @@ const startup0 = `
 //                                                                        
 // `
 
-const startup1 = `********** PIP-OS(R) V7.1.0.8 **********\n`
+const startup1 = `***** PIP-OS(R) V7.1.0.8 *****\n`
 const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
 EXEC VERSION 41.10
@@ -141,7 +148,7 @@ EXEC VERSION 41.10
 38911 BYTES FREE
 NO HOLOTAPE FOUND
 LOAD ROM(1): DEITRIX 303`
-const startup3 = `********** Welcome to ROBCO Industries (TM) Termlink **********\n`
+const startup3 = `***** Welcome to ROBCO Industries (TM) Termlink *****\n`
 
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
@@ -256,14 +263,15 @@ const commands = {
         try {
             await this.clear();
             prompt_var = ``
-            term.echo(startup0);
+            term.echo(() => render('PIP-BOY'));
+            // term.echo(startup0);
             await new Promise(resolve => setTimeout(resolve, 2000));
             await this.clear();
             term.echo(startup1, { typing: true })
                 .then(() => term.echo(startup2, { typing: true }))
                 .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
                 .then(() => this.clear())
-                .then(() => prompt_var = `>`)
+                .then(() => prompt_var = `> `)
                 .then(() => term.echo(startup3, { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);

@@ -140,7 +140,7 @@ const startup0 = `
 //                                                                        
 // `
 
-const startup1 = `********** PIP-OS(R) V7.1.0.8 **********\n`
+const startup1 = `***** PIP-OS(R) V7.1.0.8 *****\n`
 const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
 EXEC VERSION 41.10
@@ -148,7 +148,7 @@ EXEC VERSION 41.10
 38911 BYTES FREE
 NO HOLOTAPE FOUND
 LOAD ROM(1): DEITRIX 303`
-const startup3 = `********** Welcome to ROBCO Industries (TM) Termlink **********\n`
+const startup3 = `***** Welcome to ROBCO Industries (TM) Termlink *****\n`
 
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 

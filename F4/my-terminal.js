@@ -14,7 +14,14 @@
     this seams to fix this
 */
 
-const font = 'Slant';
+// const font = 'Slant';
+// const font = 'DiamFont';
+// const font = 'Lean';
+// const font = `Big Money-ne`;
+// const font = `RubiFont`;
+const font = `Star Wars`;
+// const font = `ANSI Regular`;
+
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready); // greetings
@@ -256,14 +263,15 @@ const commands = {
         try {
             await this.clear();
             prompt_var = ``
-            term.echo(startup0);
+            term.echo(() => render('PIP-BOY'));
+            // term.echo(startup0);
             await new Promise(resolve => setTimeout(resolve, 2000));
             await this.clear();
             term.echo(startup1, { typing: true })
                 .then(() => term.echo(startup2, { typing: true }))
                 .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
                 .then(() => this.clear())
-                .then(() => prompt_var = `>`)
+                .then(() => prompt_var = `> `)
                 .then(() => term.echo(startup3, { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);

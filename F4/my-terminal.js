@@ -87,7 +87,6 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
-// const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
 const startup0 = `████████  ████ ████████     ████████   ███████  ██    ██ 
 ██     ██  ██  ██     ██    ██     ██ ██     ██  ██  ██  
 ██     ██  ██  ██     ██    ██     ██ ██     ██   ████   
@@ -95,7 +94,7 @@ const startup0 = `████████  ████ ██████�
 ██         ██  ██           ██     ██ ██     ██    ██    
 ██         ██  ██           ██     ██ ██     ██    ██    
 ██        ████ ██           ████████   ███████     ██    `
-const startup1 = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n`
+const startup1 = `********** PIP-OS(R) V7.1.0.8 **********\n`
 const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
 EXEC VERSION 41.10
@@ -103,7 +102,7 @@ EXEC VERSION 41.10
 38911 BYTES FREE
 NO HOLOTAPE FOUND
 LOAD ROM(1): DEITRIX 303`
-
+const startup3 = `********** Welcome to ROBCO Industries (TM) Termlink **********`
 
 const user = 'guest';
 const server = 'thedaos.github.io';
@@ -225,7 +224,7 @@ const commands = {
                 .then(() => term.echo(startup2, { typing: true }))
                 .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
                 .then(() => this.clear())
-                .then(() => term.echo('hello', { typing: true }));
+                .then(() => term.echo(startup3, { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);
         }

@@ -273,11 +273,6 @@ term.on('click', '.directory', function() {
     term.exec(`cd ~/${dir}`);
 });
 
-// function ready() {
-//     term.echo(render('Terminal Portfolio'))
-//         .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
-// }
-
 function ready() {
     term.resume();
 }

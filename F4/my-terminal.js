@@ -261,8 +261,6 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
-term.exec('reboot', true);
-
 term.on('click', '.command', function() {
     const command = $(this).text();
     term.exec(command, { typing: true, delay: 50 });
@@ -274,6 +272,7 @@ term.on('click', '.directory', function() {
 });
 
 function ready() {
+    term.exec('reboot', true);
     term.resume();
 }
 

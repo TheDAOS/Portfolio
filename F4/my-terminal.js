@@ -87,15 +87,53 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
-// const startup = `******************Welcome to ROBCO Industries (TM) Termlink******************`
-const startup0 = `████████  ████ ████████     ████████   ███████  ██    ██ 
-██     ██  ██  ██     ██    ██     ██ ██     ██  ██  ██  
-██     ██  ██  ██     ██    ██     ██ ██     ██   ████   
-████████   ██  ████████     ████████  ██     ██    ██    
-██         ██  ██           ██     ██ ██     ██    ██    
-██         ██  ██           ██     ██ ██     ██    ██    
-██        ████ ██           ████████   ███████     ██    `
-const startup1 = `******************************************************* PIP-OS(R) V7.1.0.8 ********************************************************\n`
+const startup0 = `
+████████  ████ ████████          ████████   ███████  ██    ██ 
+██     ██  ██  ██     ██         ██     ██ ██     ██  ██  ██  
+██     ██  ██  ██     ██         ██     ██ ██     ██   ████   
+████████   ██  ████████  ███████ ████████  ██     ██    ██    
+██         ██  ██                ██     ██ ██     ██    ██    
+██         ██  ██                ██     ██ ██     ██    ██    
+██        ████ ██                ████████   ███████     ██    
+`
+
+// const startup0 = `
+//   _____  _____  _____      ______   _____  __   __
+//  |_____]   |   |_____] ___ |_____] |     |   \_/  
+//  |       __|__ |           |_____] |_____|    |   
+//                                                   
+//`
+
+// const startup0 = `
+//     dMMMMb  dMP dMMMMb  dMMMMb  .aMMMb  dMP dMP 
+//    dMP.dMP amr dMP.dMP dMP"dMP dMP"dMP dMP.dMP  
+//   dMMMMP" dMP dMMMMP" dMMMMK" dMP dMP  VMMMMP   
+//  dMP     dMP dMP     dMP.aMF dMP.aMP dA .dMP    
+// dMP     dMP dMP     dMMMMP"  VMMMP"  VMMMP"     
+//                                                 
+// `
+
+// const startup0 = `
+//  :::====  ::: :::====           :::====  :::====  ::: ===
+//  :::  === ::: :::  ===          :::  === :::  === ::: ===
+//  =======  === =======  ======== =======  ===  ===  ===== 
+//  ===      === ===               ===  === ===  ===   ===  
+//  ===      === ===               =======   ======    ===  
+//                                                          
+// `
+
+// const startup0 = `
+// >======>   >=> >======>          >=>>=>        >===>      >=>      >=> 
+// >=>    >=> >=> >=>    >=>        >>   >=>    >=>    >=>    >=>    >=>  
+// >=>    >=> >=> >=>    >=>        >>    >=> >=>        >=>   >=> >=>    
+// >======>   >=> >======>   >====> >==>>=>   >=>        >=>     >=>      
+// >=>        >=> >=>               >>    >=> >=>        >=>     >=>      
+// >=>        >=> >=>               >>     >>   >=>     >=>      >=>      
+// >=>        >=> >=>               >===>>=>      >===>          >=>      
+//                                                                        
+// `
+
+const startup1 = `********** PIP-OS(R) V7.1.0.8 **********\n`
 const startup2 = `COPYRIGHT 2075 ROBCO(R)
 LOADER V1.1
 EXEC VERSION 41.10
@@ -103,15 +141,14 @@ EXEC VERSION 41.10
 38911 BYTES FREE
 NO HOLOTAPE FOUND
 LOAD ROM(1): DEITRIX 303`
-
-
-const user = 'guest';
-const server = 'thedaos.github.io';
+const startup3 = `********** Welcome to ROBCO Industries (TM) Termlink **********\n`
 
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
+let prompt_var = ``
+
 function prompt() {
-    return ``;
+    return prompt_var;
 }
 
 function print_dirs() {
@@ -215,35 +252,22 @@ const commands = {
     test2() {
         term.echo(startup0)
     },
-    reboot() {
-        // term.echo(startup0, { delay: 50 })
-        //     .then(() => this.clear())
-        term.echo(startup1, { typing: true })
-            .then(() => term.echo(startup2, { typing: true }))
-            .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
-            .then(() => this.clear())
-            .then(() => term.echo('hello', { typing: true }));
-    },
-    async reboot2() {
+    async reboot() {
         try {
             await this.clear();
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            prompt_var = ``
             term.echo(startup0);
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            await this.clear();
+            term.echo(startup1, { typing: true })
+                .then(() => term.echo(startup2, { typing: true }))
+                .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
+                .then(() => this.clear())
+                .then(() => prompt_var = `>`)
+                .then(() => term.echo(startup3, { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);
         }
-    },
-    reboottest() {
-        term.echo(startup0, { delay: 50, typing: false })
-        .then(() => this.clear()) // Ensure this.clear() returns a promise
-        .then(() => term.echo(startup1, { typing: true }))
-        .then(() => term.echo(startup2, { typing: true }))
-        .then(() => new Promise(resolve => setTimeout(resolve, 2000))) // Wait for 2 seconds
-        .then(() => this.clear()) // Clear again before showing "hello"
-        .then(() => term.echo('hello', { typing: true }))
-        .catch(error => {
-            console.error("An error occurred:", error); // Handle any errors
-        });
     }
 };
 
@@ -277,11 +301,6 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
-term.exec('reboot', true)
-
-// to show the help at start without exicuting it
-// term.exec('help', true);
-
 term.on('click', '.command', function() {
     const command = $(this).text();
     term.exec(command, { typing: true, delay: 50 });
@@ -292,12 +311,8 @@ term.on('click', '.directory', function() {
     term.exec(`cd ~/${dir}`);
 });
 
-// function ready() {
-//     term.echo(render('Terminal Portfolio'))
-//         .echo('<b>Welcome to my Terminal Portfolio</b>\n', {raw: true}).resume();
-// }
-
 function ready() {
+    term.exec('reboot', true);
     term.resume();
 }
 

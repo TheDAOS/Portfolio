@@ -277,7 +277,8 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
-term.exec('reboot', true)
+term.exec('reboot2', true)
+    .then(() => term.exec('reboot', true));
 
 // to show the help at start without exicuting it
 // term.exec('help', true);

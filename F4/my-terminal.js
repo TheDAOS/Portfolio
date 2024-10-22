@@ -35,9 +35,9 @@ const directories = {
     education: [
         '',
         '<white>education</white>',
-        '* <a href="https://www.linnkacademyindia.com/">Linnk Academy</a> <yellow>"Python Django Development"</yellow> May 2023-Nov 2023',
-        '* <a href="https://meserumelycollege.ac.in/">MES College Erumely</a> <yellow>"Computer Science"</yellow> 2020-2023',
-        '* <a href="https://en.wikipedia.org/wiki/Higher_Secondary_Certificate">Higher-secondary</a> <a href="https://marthomavhsskunnam.wixsite.com/vhseschool">MTVHSS</a> <yellow>"Computer Science and Infortanment Systems"</yellow> 2018-2020',
+        '* <a href="https://www.linnkacademyindia.com/">Linnk Academy</a> <white>"Python Django Development"</white> May 2023-Nov 2023',
+        '* <a href="https://meserumelycollege.ac.in/">MES College Erumely</a> <white>"Computer Science"</white> 2020-2023',
+        '* <a href="https://en.wikipedia.org/wiki/Higher_Secondary_Certificate">Higher-secondary</a> <a href="https://marthomavhsskunnam.wixsite.com/vhseschool">MTVHSS</a> <white>"Computer Science and Infortanment Systems"</white> 2018-2020',
         ''
     ],
     projects: [
@@ -263,7 +263,7 @@ const commands = {
         try {
             await this.clear();
             prompt_var = ``
-            term.echo(() => render('PIP-BOY'));
+            term.echo(() => render('PIP - BOY'));
             // term.echo(startup0);
             await new Promise(resolve => setTimeout(resolve, 2000));
             await this.clear();

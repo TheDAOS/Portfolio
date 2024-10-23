@@ -14,7 +14,8 @@
     this seams to fix this
 */
 
-const font = 'Slant';
+// const font = 'Slant';
+const font = 'USA Flag';
 // const font = 'DiamFont';
 // const font = 'Lean';
 // const font = `Big Money-ne`;
@@ -334,7 +335,7 @@ const commands = {
             console.error('An error occurred:', error);
         }
     },
-    pipboy(logo_num = 0) {
+    pipboy(logo_num = 1) {
         let logo_output = '';
         switch (logo_num) {
             case 0:

@@ -14,7 +14,7 @@
     this seams to fix this
 */
 
-let font = 'Slant';
+const font = 'Slant';
 // const font = 'DiamFont';
 // const font = 'Lean';
 // const font = `Big Money-ne`;
@@ -338,13 +338,10 @@ const commands = {
         let logo_output = '';
         switch (logo_num) {
             case 0:
-                let i = '';
-                let temp = font;
-                for (let i in font_list) {
-                    let font = font_list[i];
-                    term.echo(() => render('PIP - BOY'));
+                for (let i of font_list) {
+                    term.echo(i);
+                    term.echo(() => pipboy_render('PIP - BOY', i));
                 }
-                let font = temp
                 break;
             case 1:
                 logo_output = logo1;
@@ -362,11 +359,10 @@ const commands = {
                 logo_output = logo5;
                 break;
             default:
-                logo_output = `Invaid option`;
+                logo_output = `Invalid option`;
                 break;
         }
-        term.echo(font_list.length)
-        term.echo(logo_output)
+        term.echo(logo_output);
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
@@ -414,8 +410,17 @@ term.on('click', '.directory', function() {
 });
 
 function ready() {
-    //term.exec('reboot', true);
+    term.exec('reboot', true);
     term.resume();
+}
+
+function pipboy_render(text, pipboy_font) {
+    const cols = term.cols();
+    return trim(figlet.textSync(text, {
+        font: pipboy_font,
+        width: cols,
+        whitespaceBreak: true
+    }));
 }
 
 function render(text) {

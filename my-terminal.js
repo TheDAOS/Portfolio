@@ -14,7 +14,7 @@
     this seams to fix this
 */
 
-const font = 'Slant';
+let font = 'Slant';
 // const font = 'DiamFont';
 // const font = 'Lean';
 // const font = `Big Money-ne`;
@@ -23,34 +23,68 @@ const font = 'Slant';
 // const font = `ANSI Regular`;
 
 // untested
-// const font = `BlurVision ASCII`;
-// const font = `Alpha`;
-// const font = `Doh`;
-// const font = `Doom`;
-// const font = `Graceful`;
-// const font = `Merlin1`;
-// const font = `Modular`;
-// const font = `Ogre`;
-// const font = `Electronic`;
-// const font = `3-D`;
-// const font = `5 Line Oblique`;
-// const font = `Arrows`;
-// const font = `Banner3`;
-// const font = `Basic`;
-// const font = `Block`;
-// const font = `Colossal`;
-// const font = `Cyberlarge`;
-// const font = `Cybermedium`;
-// const font = `Dot Matrix`;
-// const font = `Fender`;
-// const font = `Ivrit`;
-// const font = `Larry 3D`;
-// const font = `Nipples`;
-// const font = `Roman`;
-// const font = `Rounded`;
-// const font = `Stop`;
-// const font = `USA Flag`; // Good
-// const font = `Univers`;
+
+const font_list = [
+    `BlurVision ASCII`,
+    `Alpha`,
+    `Doh`,
+    `Doom`,
+    `Graceful`,
+    `Merlin1`,
+    `Modular`,
+    `Ogre`,
+    `Electronic`,
+    `3-D`,
+    `5 Line Oblique`,
+    `Arrows`,
+    `Banner3`,
+    `Basic`,
+    `Block`,
+    `Colossal`,
+    `Cyberlarge`,
+    `Cybermedium`,
+    `Dot Matrix`,
+    `Fender`,
+    `Ivrit`,
+    `Larry 3D`,
+    `Nipples`,
+    `Roman`,
+    `Rounded`,
+    `Stop`,
+    `USA Flag`,
+    `Univers`,
+];
+
+// const font_list = [
+//     'BlurVision ASCII',
+//     'Alpha',
+//     'Doh',
+//     'Doom',
+//     'Graceful',
+//     'Merlin1',
+//     'Modular',
+//     'Ogre',
+//     'Electronic',
+//     '3-D',
+//     '5 Line Oblique',
+//     'Arrows',
+//     'Banner3',
+//     'Basic',
+//     'Block',
+//     'Colossal',
+//     'Cyberlarge',
+//     'Cybermedium',
+//     'Dot Matrix',
+//     'Fender',
+//     'Ivrit',
+//     'Larry 3D',
+//     'Nipples',
+//     'Roman',
+//     'Rounded',
+//     'Stop',
+//     'USA Flag',
+//     'Univers',
+// ];
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready); // greetings
@@ -300,9 +334,18 @@ const commands = {
             console.error('An error occurred:', error);
         }
     },
-    pipboy(logo_num = 1) {
+    pipboy(logo_num = 0) {
         let logo_output = '';
         switch (logo_num) {
+            case 0:
+                let i = '';
+                let temp = font;
+                for (let i in font_list) {
+                    let font = font_list[i];
+                    term.echo(() => render('PIP - BOY'));
+                }
+                let font = temp
+                break;
             case 1:
                 logo_output = logo1;
                 break;
@@ -322,6 +365,7 @@ const commands = {
                 logo_output = `Invaid option`;
                 break;
         }
+        term.echo(font_list.length)
         term.echo(logo_output)
     },
     test() {
@@ -370,7 +414,7 @@ term.on('click', '.directory', function() {
 });
 
 function ready() {
-    term.exec('reboot', true);
+    //term.exec('reboot', true);
     term.resume();
 }
 

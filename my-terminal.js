@@ -14,12 +14,12 @@
     this seams to fix this
 */
 
-// const font = 'Slant';
+const font = 'Slant';
 // const font = 'DiamFont';
 // const font = 'Lean';
 // const font = `Big Money-ne`;
 // const font = `RubiFont`;
-const font = `Star Wars`;
+// const font = `Star Wars`;
 // const font = `ANSI Regular`;
 
 
@@ -94,15 +94,15 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
-const startup0 = `
-████████  ████ ████████          ████████   ███████  ██    ██ 
-██     ██  ██  ██     ██         ██     ██ ██     ██  ██  ██  
-██     ██  ██  ██     ██         ██     ██ ██     ██   ████   
-████████   ██  ████████  ███████ ████████  ██     ██    ██    
-██         ██  ██                ██     ██ ██     ██    ██    
-██         ██  ██                ██     ██ ██     ██    ██    
-██        ████ ██                ████████   ███████     ██    
-`
+// const startup0 = `
+// ████████  ████ ████████          ████████   ███████  ██    ██ 
+// ██     ██  ██  ██     ██         ██     ██ ██     ██  ██  ██  
+// ██     ██  ██  ██     ██         ██     ██ ██     ██   ████   
+// ████████   ██  ████████  ███████ ████████  ██     ██    ██    
+// ██         ██  ██                ██     ██ ██     ██    ██    
+// ██         ██  ██                ██     ██ ██     ██    ██    
+// ██        ████ ██                ████████   ███████     ██    
+// `
 
 // const startup0 = `
 //   _____  _____  _____      ______   _____  __   __

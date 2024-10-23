@@ -10,16 +10,33 @@
         .command, .directory {
             cursor: pointer;
         }
+        green, yellow, blue {
+            color: lightcoral;
+        }
         white {
-            color: white;
+            color:green;
+            font-weight: bold
         }
-        blue {
-            color: blue;
+        .terminal {
+            --color: green;
+            --background: black;
+            --animation: terminal-glow;
+            --size: 2;
+            text-shadow: 0 0 15px green;
+            /* text-transform: uppercase; */
         }
-        yellow {
-            color: yellow;
+        a:link {
+            color: green;
         }
-        green {
+        a:visited {
+            color: green;
+        }
+        a:hover {
+            background-color: green;
+            color: black;
+        }
+        a:active {
+            background-color: green;
             color: green;
         }
     </style>

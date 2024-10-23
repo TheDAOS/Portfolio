@@ -14,17 +14,10 @@
     this seams to fix this
 */
 
-// const font = 'Slant';
-// const font = 'DiamFont';
-// const font = 'Lean';
-// const font = `Big Money-ne`;
-// const font = `RubiFont`;
-const font = `Star Wars`;
-// const font = `ANSI Regular`;
-
+const font = 'Slant';
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
-figlet.preloadFonts([font], ready); // greetings
+figlet.preloadFonts([font], ready);
 
 const formatter = new Intl.ListFormat('en', {
     style: 'long',
@@ -35,9 +28,9 @@ const directories = {
     education: [
         '',
         '<white>education</white>',
-        '* <a href="https://www.linnkacademyindia.com/">Linnk Academy</a> <white>"Python Django Development"</white> May 2023-Nov 2023',
-        '* <a href="https://meserumelycollege.ac.in/">MES College Erumely</a> <white>"Computer Science"</white> 2020-2023',
-        '* <a href="https://en.wikipedia.org/wiki/Higher_Secondary_Certificate">Higher-secondary</a> <a href="https://marthomavhsskunnam.wixsite.com/vhseschool">MTVHSS</a> <white>"Computer Science and Infortanment Systems"</white> 2018-2020',
+        '* <a href="https://www.linnkacademyindia.com/">Linnk Academy</a> <yellow>"Python Django Development"</yellow> May 2023-Nov 2023',
+        '* <a href="https://meserumelycollege.ac.in/">MES College Erumely</a> <yellow>"Computer Science"</yellow> 2020-2023',
+        '* <a href="https://en.wikipedia.org/wiki/Higher_Secondary_Certificate">Higher-secondary</a> <a href="https://marthomavhsskunnam.wixsite.com/vhseschool">MTVHSS</a> <yellow>"Computer Science and Infortanment Systems"</yellow> 2018-2020',
         ''
     ],
     projects: [
@@ -70,21 +63,21 @@ const directories = {
             'JavaScript',
             'PHP',
             'Go',
-        ].map(lang => `* <white>${lang}</white>`),
+        ].map(lang => `* <yellow>${lang}</yellow>`),
         '',
         '<white>libraries</white>',
         [
             'Django',
             'Bootstrap',
             'PyGames',
-        ].map(lib => `* <white>${lib}</white>`),
+        ].map(lib => `* <green>${lib}</green>`),
         '',
         '<white>tools</white>',
         [
             'GNU/Linux',
             'git',
             'Microsoft / Google / Libre Office Suites',
-        ].map(lib => `* <white>${lib}</white>`),
+        ].map(lib => `* <blue>${lib}</blue>`),
         ''
     ].flat()
 };
@@ -94,73 +87,18 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
-const startup0 = `
-████████  ████ ████████          ████████   ███████  ██    ██ 
-██     ██  ██  ██     ██         ██     ██ ██     ██  ██  ██  
-██     ██  ██  ██     ██         ██     ██ ██     ██   ████   
-████████   ██  ████████  ███████ ████████  ██     ██    ██    
-██         ██  ██                ██     ██ ██     ██    ██    
-██         ██  ██                ██     ██ ██     ██    ██    
-██        ████ ██                ████████   ███████     ██    
-`
-
-// const startup0 = `
-//   _____  _____  _____      ______   _____  __   __
-//  |_____]   |   |_____] ___ |_____] |     |   \_/  
-//  |       __|__ |           |_____] |_____|    |   
-//                                                   
-//`
-
-// const startup0 = `
-//     dMMMMb  dMP dMMMMb  dMMMMb  .aMMMb  dMP dMP 
-//    dMP.dMP amr dMP.dMP dMP"dMP dMP"dMP dMP.dMP  
-//   dMMMMP" dMP dMMMMP" dMMMMK" dMP dMP  VMMMMP   
-//  dMP     dMP dMP     dMP.aMF dMP.aMP dA .dMP    
-// dMP     dMP dMP     dMMMMP"  VMMMP"  VMMMP"     
-//                                                 
-// `
-
-// const startup0 = `
-//  :::====  ::: :::====           :::====  :::====  ::: ===
-//  :::  === ::: :::  ===          :::  === :::  === ::: ===
-//  =======  === =======  ======== =======  ===  ===  ===== 
-//  ===      === ===               ===  === ===  ===   ===  
-//  ===      === ===               =======   ======    ===  
-//                                                          
-// `
-
-// const startup0 = `
-// >======>   >=> >======>          >=>>=>        >===>      >=>      >=> 
-// >=>    >=> >=> >=>    >=>        >>   >=>    >=>    >=>    >=>    >=>  
-// >=>    >=> >=> >=>    >=>        >>    >=> >=>        >=>   >=> >=>    
-// >======>   >=> >======>   >====> >==>>=>   >=>        >=>     >=>      
-// >=>        >=> >=>               >>    >=> >=>        >=>     >=>      
-// >=>        >=> >=>               >>     >>   >=>     >=>      >=>      
-// >=>        >=> >=>               >===>>=>      >===>          >=>      
-//                                                                        
-// `
-
-const startup1 = `***** PIP-OS(R) V7.1.0.8 *****\n`
-const startup2 = `COPYRIGHT 2075 ROBCO(R)
-LOADER V1.1
-EXEC VERSION 41.10
-64k RAM SYSTEM
-38911 BYTES FREE
-NO HOLOTAPE FOUND
-LOAD ROM(1): DEITRIX 303`
-const startup3 = `***** Welcome to ROBCO Industries (TM) Termlink *****\n`
+const user = 'guest';
+const server = 'thedaos.github.io';
 
 const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
-let prompt_var = ``
-
 function prompt() {
-    return prompt_var;
+    return `[[;green;]${user}@${server}]:[[;blue;]${cwd}]$ `;
 }
 
 function print_dirs() {
     term.echo(dirs.map(dir => {
-        return `<white class="directory">${dir}</white>`;
+        return `<blue class="directory">${dir}</blue>`;
     }).join('<br>'), {raw: true});
 }
 
@@ -255,27 +193,6 @@ const commands = {
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
-    },
-    test2() {
-        term.echo(startup0)
-    },
-    async reboot() {
-        try {
-            await this.clear();
-            prompt_var = ``
-            term.echo(() => render('PIP - BOY'));
-            // term.echo(startup0);
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            await this.clear();
-            term.echo(startup1, { typing: true })
-                .then(() => term.echo(startup2, { typing: true }))
-                .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
-                .then(() => this.clear())
-                .then(() => prompt_var = `> `)
-                .then(() => term.echo(startup3, { typing: true }));
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
     }
 };
 
@@ -309,6 +226,9 @@ const term = $('body').terminal(commands, {
 
 term.pause();
 
+// to show the help at start without exicuting it
+term.exec('help', true);
+
 term.on('click', '.command', function() {
     const command = $(this).text();
     term.exec(command, { typing: true, delay: 50 });
@@ -320,8 +240,20 @@ term.on('click', '.directory', function() {
 });
 
 function ready() {
-    term.exec('reboot', true);
-    term.resume();
+    const seed = rand(256);
+    term.echo(() => rainbow(render('Terminal Portfolio'), seed))
+        .echo('<white>Welcome to my Terminal Portfolio</white>\n', {raw: true}).resume();
+}
+
+function rainbow(string, seed) {
+    return lolcat.rainbow(function(char, color) {
+        char = $.terminal.escape_brackets(char);
+        return `[[;${hex(color)};]${char}]`;
+    }, string, seed).join('\n');
+}
+
+function rand(max) {
+    return Math.floor(Math.random() * (max + 1));
 }
 
 function render(text) {
@@ -335,4 +267,10 @@ function render(text) {
 
 function trim(str) {
     return str.replace(/[\n\s]+$/, '');
+}
+
+function hex(color) {
+    return '#' + [color.red, color.green, color.blue].map(n => {
+        return n.toString(16).padStart(2, '0');
+    }).join('');
 }

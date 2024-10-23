@@ -22,6 +22,35 @@ const font = 'Slant';
 // const font = `Star Wars`;
 // const font = `ANSI Regular`;
 
+// untested
+// const font = `BlurVision ASCII`;
+// const font = `Alpha`;
+// const font = `Doh`;
+// const font = `Doom`;
+// const font = `Graceful`;
+// const font = `Merlin1`;
+// const font = `Modular`;
+// const font = `Ogre`;
+// const font = `Electronic`;
+// const font = `3-D`;
+// const font = `5 Line Oblique`;
+// const font = `Arrows`;
+// const font = `Banner3`;
+// const font = `Basic`;
+// const font = `Block`;
+// const font = `Colossal`;
+// const font = `Cyberlarge`;
+// const font = `Cybermedium`;
+// const font = `Dot Matrix`;
+// const font = `Fender`;
+// const font = `Ivrit`;
+// const font = `Larry 3D`;
+// const font = `Nipples`;
+// const font = `Roman`;
+// const font = `Rounded`;
+// const font = `Stop`;
+// const font = `USA Flag`; // Good
+// const font = `Univers`;
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready); // greetings

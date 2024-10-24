@@ -14,7 +14,8 @@
     this seams to fix this
 */
 
-const font = 'Slant';
+// const font = 'Slant';
+const font = 'USA Flag';
 // const font = 'DiamFont';
 // const font = 'Lean';
 // const font = `Big Money-ne`;
@@ -22,6 +23,69 @@ const font = 'Slant';
 // const font = `Star Wars`;
 // const font = `ANSI Regular`;
 
+// untested
+
+const font_list = [
+    `BlurVision ASCII`,
+    `Alpha`,
+    `Doh`,
+    `Doom`,
+    `Graceful`,
+    `Merlin1`,
+    `Modular`,
+    `Ogre`,
+    `Electronic`,
+    `3-D`,
+    `5 Line Oblique`,
+    `Arrows`,
+    `Banner3`,
+    `Basic`,
+    `Block`,
+    `Colossal`,
+    `Cyberlarge`,
+    `Cybermedium`,
+    `Dot Matrix`,
+    `Fender`,
+    `Ivrit`,
+    `Larry 3D`,
+    `Nipples`,
+    `Roman`,
+    `Rounded`,
+    `Stop`,
+    `USA Flag`,
+    `Univers`,
+];
+
+// const font_list = [
+//     'BlurVision ASCII',
+//     'Alpha',
+//     'Doh',
+//     'Doom',
+//     'Graceful',
+//     'Merlin1',
+//     'Modular',
+//     'Ogre',
+//     'Electronic',
+//     '3-D',
+//     '5 Line Oblique',
+//     'Arrows',
+//     'Banner3',
+//     'Basic',
+//     'Block',
+//     'Colossal',
+//     'Cyberlarge',
+//     'Cybermedium',
+//     'Dot Matrix',
+//     'Fender',
+//     'Ivrit',
+//     'Larry 3D',
+//     'Nipples',
+//     'Roman',
+//     'Rounded',
+//     'Stop',
+//     'USA Flag',
+//     'Univers',
+// ];
 
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
 figlet.preloadFonts([font], ready); // greetings
@@ -94,51 +158,51 @@ const dirs = Object.keys(directories);
 const root = '~';
 let cwd = root;
 
-// const startup0 = `
-// ████████  ████ ████████          ████████   ███████  ██    ██ 
-// ██     ██  ██  ██     ██         ██     ██ ██     ██  ██  ██  
-// ██     ██  ██  ██     ██         ██     ██ ██     ██   ████   
-// ████████   ██  ████████  ███████ ████████  ██     ██    ██    
-// ██         ██  ██                ██     ██ ██     ██    ██    
-// ██         ██  ██                ██     ██ ██     ██    ██    
-// ██        ████ ██                ████████   ███████     ██    
-// `
+const logo1 = `
+████████  ████ ████████          ████████   ███████  ██    ██ 
+██     ██  ██  ██     ██         ██     ██ ██     ██  ██  ██  
+██     ██  ██  ██     ██         ██     ██ ██     ██   ████   
+████████   ██  ████████  ███████ ████████  ██     ██    ██    
+██         ██  ██                ██     ██ ██     ██    ██    
+██         ██  ██                ██     ██ ██     ██    ██    
+██        ████ ██                ████████   ███████     ██    
+`
 
-// const startup0 = `
-//   _____  _____  _____      ______   _____  __   __
-//  |_____]   |   |_____] ___ |_____] |     |   \_/  
-//  |       __|__ |           |_____] |_____|    |   
-//                                                   
-//`
+const logo2 = `
+  _____  _____  _____      ______   _____  __   __
+ |_____]   |   |_____] ___ |_____] |     |   \_/  
+ |       __|__ |           |_____] |_____|    |   
+                                                  
+`
 
-// const startup0 = `
-//     dMMMMb  dMP dMMMMb  dMMMMb  .aMMMb  dMP dMP 
-//    dMP.dMP amr dMP.dMP dMP"dMP dMP"dMP dMP.dMP  
-//   dMMMMP" dMP dMMMMP" dMMMMK" dMP dMP  VMMMMP   
-//  dMP     dMP dMP     dMP.aMF dMP.aMP dA .dMP    
-// dMP     dMP dMP     dMMMMP"  VMMMP"  VMMMP"     
-//                                                 
-// `
+const logo3 = `
+    dMMMMb  dMP dMMMMb  dMMMMb  .aMMMb  dMP dMP 
+   dMP.dMP amr dMP.dMP dMP"dMP dMP"dMP dMP.dMP  
+  dMMMMP" dMP dMMMMP" dMMMMK" dMP dMP  VMMMMP   
+ dMP     dMP dMP     dMP.aMF dMP.aMP dA .dMP    
+dMP     dMP dMP     dMMMMP"  VMMMP"  VMMMP"     
+                                                
+`
 
-// const startup0 = `
-//  :::====  ::: :::====           :::====  :::====  ::: ===
-//  :::  === ::: :::  ===          :::  === :::  === ::: ===
-//  =======  === =======  ======== =======  ===  ===  ===== 
-//  ===      === ===               ===  === ===  ===   ===  
-//  ===      === ===               =======   ======    ===  
-//                                                          
-// `
+const logo4 = `
+ :::====  ::: :::====           :::====  :::====  ::: ===
+ :::  === ::: :::  ===          :::  === :::  === ::: ===
+ =======  === =======  ======== =======  ===  ===  ===== 
+ ===      === ===               ===  === ===  ===   ===  
+ ===      === ===               =======   ======    ===  
+                                                         
+`
 
-// const startup0 = `
-// >======>   >=> >======>          >=>>=>        >===>      >=>      >=> 
-// >=>    >=> >=> >=>    >=>        >>   >=>    >=>    >=>    >=>    >=>  
-// >=>    >=> >=> >=>    >=>        >>    >=> >=>        >=>   >=> >=>    
-// >======>   >=> >======>   >====> >==>>=>   >=>        >=>     >=>      
-// >=>        >=> >=>               >>    >=> >=>        >=>     >=>      
-// >=>        >=> >=>               >>     >>   >=>     >=>      >=>      
-// >=>        >=> >=>               >===>>=>      >===>          >=>      
-//                                                                        
-// `
+const logo5 = `
+>======>   >=> >======>          >=>>=>        >===>      >=>      >=> 
+>=>    >=> >=> >=>    >=>        >>   >=>    >=>    >=>    >=>    >=>  
+>=>    >=> >=> >=>    >=>        >>    >=> >=>        >=>   >=> >=>    
+>======>   >=> >======>   >====> >==>>=>   >=>        >=>     >=>      
+>=>        >=> >=>               >>    >=> >=>        >=>     >=>      
+>=>        >=> >=>               >>     >>   >=>     >=>      >=>      
+>=>        >=> >=>               >===>>=>      >===>          >=>      
+                                                                       
+`
 
 const startup1 = `***** PIP-OS(R) V7.1.0.8 *****\n`
 const startup2 = `COPYRIGHT 2075 ROBCO(R)
@@ -253,12 +317,6 @@ const commands = {
     
         this.echo(creditsText, { raw: true });
     },
-    test() {
-        term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
-    },
-    test2() {
-        term.echo(startup0)
-    },
     async reboot() {
         try {
             await this.clear();
@@ -276,7 +334,40 @@ const commands = {
         } catch (error) {
             console.error('An error occurred:', error);
         }
-    }
+    },
+    pipboy(logo_num = 1) {
+        let logo_output = '';
+        switch (logo_num) {
+            case 0:
+                for (let i of font_list) {
+                    term.echo(i);
+                    term.echo(() => pipboy_render('PIP - BOY', i));
+                }
+                break;
+            case 1:
+                logo_output = logo1;
+                break;
+            case 2:
+                logo_output = logo2;
+                break;
+            case 3:
+                logo_output = logo3;
+                break;
+            case 4:
+                logo_output = logo4;
+                break;
+            case 5:
+                logo_output = logo5;
+                break;
+            default:
+                logo_output = `Invalid option`;
+                break;
+        }
+        term.echo(logo_output);
+    },
+    test() {
+        term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
+    },
 };
 
 // clear is default command that you can turn off with an option
@@ -322,6 +413,15 @@ term.on('click', '.directory', function() {
 function ready() {
     term.exec('reboot', true);
     term.resume();
+}
+
+function pipboy_render(text, pipboy_font) {
+    const cols = term.cols();
+    return trim(figlet.textSync(text, {
+        font: pipboy_font,
+        width: cols,
+        whitespaceBreak: true
+    }));
 }
 
 function render(text) {

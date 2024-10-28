@@ -14,81 +14,49 @@
     this seams to fix this
 */
 
-// const font = 'Slant';
-const font = 'USA Flag';
-// const font = 'DiamFont';
-// const font = 'Lean';
-// const font = `Big Money-ne`;
-// const font = `RubiFont`;
-// const font = `Star Wars`;
-// const font = `ANSI Regular`;
-
-// untested
+const font_default = 'USA Flag';
 
 const font_list = [
-    `BlurVision ASCII`,
-    `Alpha`,
-    `Doh`,
-    `Doom`,
-    `Graceful`,
-    `Merlin1`,
-    `Modular`,
-    `Ogre`,
-    `Electronic`,
-    `3-D`,
-    `5 Line Oblique`,
-    `Arrows`,
-    `Banner3`,
-    `Basic`,
-    `Block`,
-    `Colossal`,
-    `Cyberlarge`,
-    `Cybermedium`,
-    `Dot Matrix`,
-    `Fender`,
-    `Ivrit`,
-    `Larry 3D`,
-    `Nipples`,
-    `Roman`,
-    `Rounded`,
-    `Stop`,
-    `USA Flag`,
-    `Univers`,
+    'BlurVision ASCII',
+    'Alpha',
+    'Doh',
+    'Doom',
+    'Graceful',
+    'Merlin1',
+    'Modular',
+    'Ogre',
+    'Electronic',
+    '3-D',
+    '5 Line Oblique',
+    'Arrows',
+    'Banner3',
+    'Basic',
+    'Block',
+    'Colossal',
+    'Cyberlarge',
+    'Cybermedium',
+    'Dot Matrix',
+    'Fender',
+    'Ivrit',
+    'Larry 3D',
+    'Nipples',
+    'Roman',
+    'Rounded',
+    'Stop',
+    'USA Flag',
+    'Univers',
+    'ANSI Regular',
+    'Star Wars',
+    'RubiFont',
+    'Big Money-ne',
+    'Lean',
+    'DiamFont',
+    'Slant',
 ];
 
-// const font_list = [
-//     'BlurVision ASCII',
-//     'Alpha',
-//     'Doh',
-//     'Doom',
-//     'Graceful',
-//     'Merlin1',
-//     'Modular',
-//     'Ogre',
-//     'Electronic',
-//     '3-D',
-//     '5 Line Oblique',
-//     'Arrows',
-//     'Banner3',
-//     'Basic',
-//     'Block',
-//     'Colossal',
-//     'Cyberlarge',
-//     'Cybermedium',
-//     'Dot Matrix',
-//     'Fender',
-//     'Ivrit',
-//     'Larry 3D',
-//     'Nipples',
-//     'Roman',
-//     'Rounded',
-//     'Stop',
-//     'USA Flag',
-//     'Univers',
-// ];
-
 figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
-figlet.preloadFonts([font], ready); // greetings
+figlet.preloadFonts(font_list);
+figlet.preloadFonts([font_default], ready); // greetings
 
 const formatter = new Intl.ListFormat('en', {
     style: 'long',
@@ -335,9 +303,12 @@ const commands = {
             console.error('An error occurred:', error);
         }
     },
-    pipboy(logo_num = 1) {
+    pipboy(logo_num = -1) {
         let logo_output = '';
         switch (logo_num) {
+            case -1:
+                term.echo(() => pipboy_render('PIP - BOY', font_default));
+                break;
             case 0:
                 for (let i of font_list) {
                     term.echo(i);
@@ -363,7 +334,9 @@ const commands = {
                 logo_output = `Invalid option`;
                 break;
         }
-        term.echo(logo_output);
+        if (logo_output != '') {
+            term.echo(logo_output);
+        }
     },
     test() {
         term.echo('[[;cyan;]Welcome to my Terminal Portfolio]');
@@ -427,7 +400,7 @@ function pipboy_render(text, pipboy_font) {
 function render(text) {
     const cols = term.cols();
     return trim(figlet.textSync(text, {
-        font: font,
+        font: font_default,
         width: cols,
         whitespaceBreak: true
     }));

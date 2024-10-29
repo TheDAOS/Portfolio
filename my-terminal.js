@@ -186,6 +186,26 @@ const joke_url = 'https://v2.jokeapi.dev/joke/Programming';
 
 let prompt_var = ``
 
+// sound
+let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+let audioBuffer;
+let sourceNode;
+
+// Load the sound file
+async function loadAudio() {
+    const response = await fetch('audio/terminal_sound.mp3');
+    const data = await response.arrayBuffer();
+    audioBuffer = await audioContext.decodeAudioData(data);
+}
+
+async function playLoop() {
+    sourceNode = audioContext.createBufferSource();
+    sourceNode.buffer = audioBuffer;
+    sourceNode.loop = true; // Set to loop
+    sourceNode.connect(audioContext.destination);
+    sourceNode.start(0);
+}
+
 function prompt() {
     return prompt_var;
 }
@@ -287,6 +307,11 @@ const commands = {
     },
     async reboot() {
         try {
+            if (!audioBuffer) await loadAudio(); // Load audio if not loaded
+            await playLoop(); // Start looping audio
+
+            await this.clear();
+
             await this.clear();
             prompt_var = ``
             term.echo(() => render('PIP - BOY'));
@@ -301,6 +326,8 @@ const commands = {
                 .then(() => term.echo(startup3, { typing: true }));
         } catch (error) {
             console.error('An error occurred:', error);
+        } finally {
+            if (sourceNode) sourceNode.stop(); // Stop the audio when done
         }
     },
     pipboy(logo_num = -1) {

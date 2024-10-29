@@ -323,11 +323,10 @@ const commands = {
                 .then(() => new Promise(resolve => setTimeout(resolve, 2000)))
                 .then(() => this.clear())
                 .then(() => prompt_var = `> `)
-                .then(() => term.echo(startup3, { typing: true }));
+                .then(() => term.echo(startup3, { typing: true }))
+                .then(() => sourceNode.stop());
         } catch (error) {
             console.error('An error occurred:', error);
-        } finally {
-            if (sourceNode) sourceNode.stop(); // Stop the audio when done
         }
     },
     pipboy(logo_num = -1) {

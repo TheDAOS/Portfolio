@@ -24,7 +24,7 @@ body {
     filter: contrast(1.4) saturate(1.2) brightness(0.8);
     border-radius: 0; /* No border radius to cover entire screen */
     overflow: hidden;
-    box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.3); /* Inner glow */
+    box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.2); /* Inner glow */
 }
 .command, .directory {
     cursor: pointer;
@@ -78,12 +78,12 @@ body::after {
 
 /* Optional flickering animation for a more authentic CRT vibe */
 @keyframes flicker {
-0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 1;
-}
-20%, 24%, 55% {
-    opacity: 0.8;
-}
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.8;
+    }
 }
 
 /* Apply flickering effect to the whole body */

@@ -1,0 +1,92 @@
+:root {
+    --size: 1.2;
+    background-color: black;
+    color: #00ff00; /* Green color typical of old terminals */
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+body {
+    background-color: #1a1a1a; /* Slightly off-black to give depth */
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+    box-shadow: 0 0 15px #00ff00;
+    position: relative;
+    z-index: 1;
+
+    /* CRT Screen Effect */
+    filter: contrast(1.4) saturate(1.2) brightness(0.8);
+    border-radius: 0; /* No border radius to cover entire screen */
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 255, 0, 0.2); /* Inner glow */
+}
+.command, .directory {
+    cursor: pointer;
+}
+green, yellow, blue {
+    color: lightcoral;
+}
+white {
+    color:green;
+    font-weight: bold
+}
+.terminal {
+    --color: green;
+    --background: rgba(0, 255, 0, 0);
+    --animation: terminal-glow;
+    --size: 2;
+    text-shadow: 0 0 15px green;
+    /* text-transform: uppercase; */
+}
+a:link {
+    color: green;
+}
+a:visited {
+    color: green;
+}
+a:hover {
+    background-color: green;
+    color: black;
+}
+a:active {
+    background-color: green;
+    color: green;
+}
+
+/* CRT Scan Lines Effect */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        transparent 2px,
+        rgba(0, 255, 0, 0.03) 3px
+    );
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 1;
+}
+
+/* Optional flickering animation for a more authentic CRT vibe */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+    }
+    20%, 24%, 55% {
+        opacity: 0.8;
+    }
+}
+
+/* Apply flickering effect to the whole body */
+body {
+    animation: flicker 0.08s infinite;
+}

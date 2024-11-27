@@ -7,8 +7,8 @@ An terminal-based portfolio website using jQuery Terminal
 
 **F4 Terminal UI:**   
 [test](https://thedaos.github.io/Portfolio/F4/test/)   
-[test2](https://thedaos.github.io/Portfolio/F4/test2/)  
-[test3](https://thedaos.github.io/Portfolio/F4/test3/) - RC    
+[test2](https://thedaos.github.io/Portfolio/F4/test2/)   
+[test3](https://thedaos.github.io/Portfolio/F4/test3/)    
 [test4](https://thedaos.github.io/Portfolio/F4/test4/)    
 [test5](https://thedaos.github.io/Portfolio/F4/test5/)    
 

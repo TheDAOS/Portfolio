@@ -13,4 +13,4 @@ An terminal-based portfolio website using jQuery Terminal
 [test5](https://thedaos.github.io/Portfolio/F4/test5/)    
 
 **Old UI:**   
-[v1](https://thedaos.github.io/v1/)
+[v1](https://thedaos.github.io/Portfolio/v1/)

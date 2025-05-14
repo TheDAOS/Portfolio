@@ -54,7 +54,8 @@ const font_list = [
     'Slant',
 ];
 
-figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
+// figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts' });
+figlet.defaults({ fontPath: 'https://cdn.jsdelivr.net/npm/figlet@1.8.1/fonts' });
 figlet.preloadFonts(font_list);
 figlet.preloadFonts([font_default], ready); // greetings
 

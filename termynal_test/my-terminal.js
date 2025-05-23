@@ -16,7 +16,8 @@
 
 const font = 'Slant';
 
-figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
+// figlet.defaults({ fontPath: 'https://unpkg.com/figlet/fonts/' });
+figlet.defaults({ fontPath: 'https://cdn.jsdelivr.net/npm/figlet@1.8.1/fonts' });
 figlet.preloadFonts([font], ready);
 
 const formatter = new Intl.ListFormat('en', {
